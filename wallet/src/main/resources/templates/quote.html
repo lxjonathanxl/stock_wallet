@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head}">
+    <title>Quote</title>
+</head>
+
+<body>
+
+<nav th:replace="~{fragments/layout :: mainNavbar}"></nav>
+
+<header th:replace="~{fragments/layout :: flashHeader}"></header>
+
+<main class="container-fluid py-5 text-center">
+    <!-- Your specific content goes here -->
+    <form action="/quote" method="post" th:action="@{/quote}">
+        <div id="search" class="container mb-3 input-group px-2">
+            <input  autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="stock symbol" type="text">
+            <input  autocomplete="off" autofocus class="form-control mx-auto w-auto" id="quantity" name="shares" placeholder="quantity" type="text" required>
+            <div class="input-group-append">
+                <button class="btn btn-primary ml-2" type="submit">Quote</button>
+            </div>
+        </div>
+    </form>
+
+    <th:block th:if="${stockName}">
+        <div class="section">
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through the database entries to display them in this table -->
+                <tr>
+                    <td th:text="${stockName}"></td>
+                    <td th:text="${stockPrice}"></td>
+                    <td th:text="${shares}"></td>
+                    <td th:text="${total}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+
+    <!-- ... (other content) ... -->
+</main>
+
+<footer th:replace="~{fragments/layout :: mainFooter}"></footer>
+
+</body>
+
+</html>

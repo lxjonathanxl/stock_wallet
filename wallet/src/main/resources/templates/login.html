@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head}">
+    <title>login</title>
+</head>
+
+<body>
+
+<nav th:replace="~{fragments/layout :: mainNavbar}"></nav>
+
+<header th:replace="~{fragments/layout :: flashHeader}"></header>
+
+<main class="container-fluid py-5 text-center">
+    <!-- Your specific content goes here -->
+    <h2>Login</h2>
+    <div th:if="${param.error}" class="bg-rose-100 justify-center p-4 ring-1 ring-rose-200 rounded-md">
+        <p>Username and Password Mismatch</p>
+    </div>
+    <form th:action="@{/login}" method="post">
+        <!-- Your login form fields go here -->
+        <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" placeholder="Username" type="text" id="username" name="username" required="true"/>
+        </div>
+
+        <div class="mb-3">
+        <input class="form-control mx-auto w-auto" placeholder="Password" type="password" id="password" name="password" required="true"/>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <!-- ... (other content) ... -->
+</main>
+
+<footer th:replace="~{fragments/layout :: mainFooter}"></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/layout :: head}">
+    <title>register</title>
+</head>
+
+<body>
+
+<nav th:replace="~{fragments/layout :: mainNavbar}"></nav>
+
+<header th:replace="~{fragments/layout :: flashHeader}"></header>
+
+<main class="container-fluid py-5 text-center">
+    <!-- Your specific content goes here -->
+    <form th:action="@{/register}" method="post"
+          id="RegistrationRequest">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="username" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input class="password-input form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" required>
+        </div>
+            <div class="mb-3 mt-3">
+                <input class="form-control mx-auto w-auto" id="confirm_password" name="confirmation" placeholder="Confirm Password" type="password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <div class="mt-3 password-checklist container">
+                <h3 class="checklist-title">Password should be</h3>
+
+                <ul class="checklist">
+                    <li class="list-item">At least 8 characters</li>
+                    <li class="list-item">At least 1 number</li>
+                    <li class="list-item">At least 1 lowercase letter</li>
+                    <li class="list-item">At least 1 uppercase letter</li>
+                    <li class="list-item">At least 1 special character</li>
+                </ul>
+            </div>
+            <!-- hidden input for validation -->
+            <input type="hidden" id="valid" name="valid" value="">
+        </div>
+    </form>
+
+    <!-- ... (other content) ... -->
+</main>
+
+<footer th:replace="~{fragments/layout :: mainFooter}"></footer>
+
+</body>
+
+</html>

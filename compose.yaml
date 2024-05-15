@@ -1,0 +1,83 @@
+version: '3.8'
+services:
+  mongo_db:
+    image: mongo:5.0.2
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    networks:
+      spring-mockstock-network:
+    ports:
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+    volumes:
+      - db:/datamongo/db
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wallet
+    networks:
+      spring-mockstock-network:
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/datasql/db
+
+  spring-wallet-api:
+    container_name: spring-wallet-api
+    build:
+      context: ./wallet
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      spring-mockstock-network:
+    restart: on-failure
+
+  mock-stock-data-server:
+    container_name: mock-stock-data-server
+    depends_on:
+      - mongo_db
+      - auth-server
+    build:
+      context: ./apiMockStocks
+      dockerfile: Dockerfile
+    restart: on-failure
+    env_file: ./.env
+    image: mock-stock-data-server:latest
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    networks:
+      - spring-mockstock-network
+    environment:
+      SPRING_APPLICATION_JSON: '{
+          "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongo_db:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
+        }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
+  auth-server:
+    container_name: auth-server
+    build:
+      context: ./AuthorizationServerMockStock
+      dockerfile: Dockerfile
+    image: auth-server:latest
+    ports:
+      - 9000:9000
+    networks:
+      - spring-mockstock-network
+
+networks:
+  spring-mockstock-network:
+    driver: bridge
+
+volumes:
+  db:
