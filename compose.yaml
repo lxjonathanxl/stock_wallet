@@ -10,20 +10,21 @@ services:
     networks:
       spring-mockstock-network:
     ports:
-      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+      - 27017:27017
     volumes:
       - db:/datamongo/db
 
   mysqldb:
     container_name: mysqldb
     image: mysql
+    env_file: ./.env
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: wallet
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
     networks:
       spring-mockstock-network:
     ports:
-      - 3306:3306
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/datasql/db
 
@@ -33,7 +34,7 @@ services:
       context: ./wallet
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - $wallet_LOCAL_PORT:$wallet_DOCKER_PORT
     depends_on:
       - mysqldb
     networks:
@@ -71,7 +72,7 @@ services:
       dockerfile: Dockerfile
     image: auth-server:latest
     ports:
-      - 9000:9000
+      - $AUTH_LOCAL_PORT:$AUTH_DOCKER_PORT
     networks:
       - spring-mockstock-network
 
