@@ -34,7 +34,7 @@ services:
       context: ./wallet
       dockerfile: Dockerfile
     ports:
-      - $wallet_LOCAL_PORT:$wallet_DOCKER_PORT
+      - $WALLET_LOCAL_PORT:$WALLET_DOCKER_PORT
     depends_on:
       - mysqldb
     networks:
@@ -57,9 +57,16 @@ services:
     networks:
       - spring-mockstock-network
     environment:
+
       SPRING_APPLICATION_JSON: '{
           "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongo_db:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
         }'
+
+      MONGODB_USERNAME: $MONGODB_USERNAME
+      MONGODB_PASSWORD: $MONGODB_PASSWORD
+      MONGODB_DATABASE: $MONGODB_DATABASE
+      MONGODB_PORT: $MONGODB_PORT
+      MONGODB_HOST: $MONGODB_HOST
     volumes:
       - .m2:/root/.m2
     stdin_open: true
