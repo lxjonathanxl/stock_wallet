@@ -39,6 +39,13 @@ services:
       - mysqldb
     networks:
       spring-mockstock-network:
+    environment:
+      API_KEY: $WALLET_API_KEY
+      SPRING_DB_PASSWORD: $WALLET_SPRING_DB_PASSWORD
+      DB_USERNAME: $WALLET_DB_USERNAME
+      DB_SPRING_URL: $WALLET_SPRING_DB_URL
+      DB_DOCKER_URL: $WALLET_DOCKER_DB_URL
+      DOCKER_DB_PASSWORD: $WALLET_DOCKER_DB_PASSWORD
     restart: on-failure
 
   mock-stock-data-server:
