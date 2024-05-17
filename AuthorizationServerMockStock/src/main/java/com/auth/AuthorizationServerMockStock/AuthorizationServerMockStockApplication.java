@@ -20,7 +20,9 @@ public class AuthorizationServerMockStockApplication {
 			UsersRepository usersRepo,
 			PasswordEncoder encoder
 	) {
+		String username = System.getenv("AUTH_USER_USERNAME");
+		String password = System.getenv("AUTH_USER_PASSWORD");
 		return args -> usersRepo.save(
-				new Users("username", encoder.encode("password"), "ROLE_ADMIN"));
+				new Users(username, encoder.encode(password), "ROLE_ADMIN"));
 	}
 }

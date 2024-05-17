@@ -69,12 +69,13 @@ public class SecurityConfig {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository(BCryptPasswordEncoder passwordEncoder){
-        String clientId = "stock-client";
-        String redirectUri = "http://127.0.0.1:8080/authorized";
+        String clientId = System.getenv("CLIENT_ID");
+        String redirectUri = System.getenv("CLIENT_REDIRECT_URI");
         String scope = "stock.write";
+        String secret = System.getenv("CLIENT_SECRET");
 
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId(clientId).clientSecret(passwordEncoder.encode("secret"))
+                .clientId(clientId).clientSecret(passwordEncoder.encode(secret))
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)

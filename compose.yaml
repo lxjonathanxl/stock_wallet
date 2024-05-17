@@ -33,6 +33,7 @@ services:
     build:
       context: ./wallet
       dockerfile: Dockerfile
+    env_file: ./.env
     ports:
       - $WALLET_LOCAL_PORT:$WALLET_DOCKER_PORT
     depends_on:
@@ -85,11 +86,17 @@ services:
       context: ./AuthorizationServerMockStock
       dockerfile: Dockerfile
     image: auth-server:latest
+    env_file: ./.env
     ports:
       - $AUTH_LOCAL_PORT:$AUTH_DOCKER_PORT
     networks:
       - spring-mockstock-network
-
+    environment:
+      AUTH_USER_PASSWORD: $AUTH_USER_PASSWORD
+      AUTH_USER_USERNAME: $AUTH_USER_USERNAME
+      CLIENT_ID: $AUTH_CLIENT_ID
+      CLIENT_SECRET: $AUTH_CLIENT_SECRET
+      CLIENT_REDIRECT_URI: $AUTH_CLIENT_REDIRECT_URI
 networks:
   spring-mockstock-network:
     driver: bridge
