@@ -10,7 +10,7 @@ services:
     networks:
       spring-mockstock-network:
     ports:
-      - 27017:27017
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - db:/datamongo/db
 
@@ -38,6 +38,7 @@ services:
       - $WALLET_LOCAL_PORT:$WALLET_DOCKER_PORT
     depends_on:
       - mysqldb
+      - mock-stock-data-server
     networks:
       spring-mockstock-network:
     environment:
