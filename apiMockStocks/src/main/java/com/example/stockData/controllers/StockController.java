@@ -16,7 +16,6 @@ public class StockController {
     StockService stockService;
 
     @PostMapping("/save/{symbol}")
-    @CrossOrigin
     public ResponseEntity<String> saveBySymbol(@PathVariable("symbol") String symbol) {
 
         String json;
