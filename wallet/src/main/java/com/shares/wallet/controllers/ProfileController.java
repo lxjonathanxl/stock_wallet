@@ -1,6 +1,7 @@
 package com.shares.wallet.controllers;
 
 import com.shares.wallet.exceptions.DatabaseException;
+import com.shares.wallet.exceptions.ServerErrorException;
 import com.shares.wallet.model.MessageController;
 import com.shares.wallet.services.UsersService;
 import org.springframework.dao.DataAccessException;
@@ -99,23 +100,9 @@ public class ProfileController {
 
         String username = principal.getName();
 
-        if (!usersService.confirmPassword(username, password)) {
-            redirectAttributes.addFlashAttribute("message", "wrong password");
-            return "redirect:/profile";
-        }
+        String message = usersService.changeCashUserProfile(username, password, cashToAdd);
 
-        try {
-            BigDecimal userWallet = usersService.lookIntoCash(username);
-            userWallet = userWallet.add(cashToAdd);
-            usersService.updateCash(username, userWallet);
-        } catch (DataAccessException | DatabaseException dataError) {
-            //TODO LOGGING
-            redirectAttributes.addFlashAttribute("message", "server error: " +
-                    "handling users wallet");
-            return "redirect:/profile";
-        }
-
-        redirectAttributes.addFlashAttribute("message", "cash added to wallet");
+        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/profile";
     }
 }

@@ -7,6 +7,7 @@ import com.shares.wallet.exceptions.UsernameTakenException;
 import com.shares.wallet.model.MessageController;
 import com.shares.wallet.model.Users;
 import com.shares.wallet.repo.UsersRepo;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -194,6 +195,27 @@ public class UsersService implements UserDetailsService {
         }
 
         return usersRepo.changeCash(cash, username);
+    }
+
+    public String changeCashUserProfile(
+            String username, String password, BigDecimal cashToAdd) {
+
+        String message;
+
+        if (!confirmPassword(username, password)) {
+            return message ="wrong password";
+        }
+
+        try {
+            BigDecimal userWallet = lookIntoCash(username);
+            userWallet = userWallet.add(cashToAdd);
+            updateCash(username, userWallet);
+        } catch (DataAccessException | ServerErrorException dataError) {
+            //TODO LOGGING
+            return message = "server error: handling users wallet";
+        }
+
+        return message = "cash added to wallet";
     }
 
 

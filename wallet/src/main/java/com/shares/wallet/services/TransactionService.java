@@ -41,7 +41,7 @@ public class TransactionService {
         return stockProxy.getStockQuote(symbol);
     }
 
-    public List<Stocks> findUserStocks(String username) {
+    public List<Stocks> findUserStocks(String username) throws UsernameNotFoundException {
 
         Users user = usersService.findUser(username);
         return stockService.getUserStocks(user);
@@ -159,20 +159,28 @@ public class TransactionService {
         }
     }
 
-    public List<StockDisplay> displayStocks(String user) throws JsonProcessingException, IllegalArgumentException {
+    public List<StockDisplay> displayStocks(String user) {
 
-        List<Stocks> stocksDb = findUserStocks(user);
         List<StockDisplay> stockDisplays = new ArrayList<>();
-        String apiKey = System.getenv("API_KEY");;
 
-        for (Stocks stock : stocksDb) {
+        try {
+            List<Stocks> stocksDb = findUserStocks(user);
 
-            String symbol = stock.getName();
-            StockQuote quote =  stockProxy.getStockQuote(symbol);
-            BigDecimal price = BigDecimal.valueOf(Double.parseDouble(quote.getPrice()));
-            BigDecimal total = stock.getQuant().multiply(price);
-            stockDisplays.add(new StockDisplay(symbol, stock.getQuant(),
-                                price, total));
+            for (Stocks stock : stocksDb) {
+
+                String symbol = stock.getName();
+                StockQuote quote = stockProxy.getStockQuote(symbol);
+                BigDecimal price = BigDecimal.valueOf(Double.parseDouble(quote.getPrice()));
+                BigDecimal total = stock.getQuant().multiply(price);
+                stockDisplays.add(new StockDisplay(symbol, stock.getQuant(),
+                        price, total));
+            }
+        } catch (JsonProcessingException | IllegalArgumentException serverError) {
+            //todo logging
+            throw new ServerErrorException("Error looking for stock");
+        } catch (UsernameNotFoundException userError) {
+            //todo logging
+            throw new ServerErrorException("Error looking for user on database");
         }
 
         return stockDisplays;

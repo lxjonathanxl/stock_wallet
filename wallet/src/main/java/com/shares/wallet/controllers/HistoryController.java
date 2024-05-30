@@ -33,17 +33,7 @@ public class HistoryController {
         String username = principal.getName();
         List<History> history = new ArrayList<>();
 
-        try {
-            history = transactionService.displayUserHistory(username);
-        } catch (UsernameNotFoundException userError) {
-            message = "Error looking for user history, username not found in database";
-            redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/";
-        } catch (HistoryNotFoundException historyError) {
-            message = "Error looking for user history, history not found in database";
-            redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/";
-        }
+        history = transactionService.displayUserHistory(username);
 
         model.addAttribute("history", history);
         return "history.html";

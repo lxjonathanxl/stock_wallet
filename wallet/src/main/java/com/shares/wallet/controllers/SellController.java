@@ -100,10 +100,10 @@ public class SellController {
             return "redirect:/sell";
         }
 
-        TransactionRequest sellConfirm = (TransactionRequest) session.getAttribute("sellConfirmRequest");
+        TransactionRequest sellConfirmRequest = (TransactionRequest) session.getAttribute("sellConfirmRequest");
         session.removeAttribute("sellConfirmRequest");
 
-        if(!sellConfirm.equals(request)) {
+        if(!sellConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/sell";
@@ -112,7 +112,7 @@ public class SellController {
 
         String username = principal.getName();
 
-        String message = transactionService.sell(request, username);
+        String message = transactionService.sell(sellConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/";
 

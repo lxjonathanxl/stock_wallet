@@ -1,9 +1,6 @@
 package com.shares.wallet.infra;
 
-import com.shares.wallet.exceptions.AlterUserStockException;
-import com.shares.wallet.exceptions.ServerErrorException;
-import com.shares.wallet.exceptions.UpdateCashException;
-import com.shares.wallet.exceptions.UserNotFoundException;
+import com.shares.wallet.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,5 +26,14 @@ public class ControllerExceptionHandler {
         String message = exception.getMessage();
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/login";
+    }
+
+    @ExceptionHandler(HistoryNotFoundException.class)
+    public String HistoryNotFoundException(Exception exception,
+                                        RedirectAttributes redirectAttributes) {
+
+        String message = exception.getMessage();
+        redirectAttributes.addFlashAttribute("message", message);
+        return "redirect:/";
     }
 }

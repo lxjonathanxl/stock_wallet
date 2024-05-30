@@ -90,10 +90,10 @@ public class BuyController {
             return "redirect:/buy";
         }
 
-        TransactionRequest buyConfirm = (TransactionRequest) session.getAttribute("buyConfirmRequest");
+        TransactionRequest buyConfirmRequest = (TransactionRequest) session.getAttribute("buyConfirmRequest");
         session.removeAttribute("buyConfirmRequest");
 
-        if (!buyConfirm.equals(request)) {
+        if (!buyConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/buy";
@@ -102,7 +102,7 @@ public class BuyController {
 
         String username = principal.getName();
 
-        String message = transactionService.buy(buyConfirm, username);
+        String message = transactionService.buy(buyConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/";
 

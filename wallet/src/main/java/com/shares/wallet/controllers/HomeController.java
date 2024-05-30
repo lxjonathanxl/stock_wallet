@@ -41,17 +41,7 @@ public class HomeController {
         BigDecimal total = BigDecimal.ZERO;
         List<StockDisplay> stocks = new ArrayList<>();
 
-        try {
-            stocks = transactionService.displayStocks(username);
-        } catch (JsonProcessingException | IllegalArgumentException e) {
-            message = "Error looking for stock";
-            redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/login";
-        } catch (UsernameNotFoundException e) {
-            message = "Error looking for user on database";
-            redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/login";
-        }
+        stocks = transactionService.displayStocks(username);
 
         for (StockDisplay stock : stocks) {
             total = total.add(stock.getTotal());
@@ -94,10 +84,10 @@ public class HomeController {
             return "redirect:/";
         }
 
-        TransactionRequest buyConfirm = new TransactionRequest(
+        TransactionRequest buyConfirmRequest = new TransactionRequest(
                 stockRequested.getName(), request.getShares(), stockRequested.getPrice());
 
-        if (!buyConfirm.equals(request)) {
+        if (!buyConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/";
@@ -105,7 +95,7 @@ public class HomeController {
 
         String username = principal.getName();
 
-        String message = transactionService.buy(buyConfirm, username);
+        String message = transactionService.buy(buyConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/";
 
@@ -138,10 +128,10 @@ public class HomeController {
             return "redirect:/";
         }
 
-        TransactionRequest sellConfirm = new TransactionRequest(
+        TransactionRequest sellConfirmRequest = new TransactionRequest(
                 stockRequested.getName(), request.getShares(), stockRequested.getPrice());
 
-        if (!sellConfirm.equals(request)) {
+        if (!sellConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/";
@@ -149,7 +139,7 @@ public class HomeController {
 
         String username = principal.getName();
 
-        String message = transactionService.sell(sellConfirm, username);
+        String message = transactionService.sell(sellConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/";
 
