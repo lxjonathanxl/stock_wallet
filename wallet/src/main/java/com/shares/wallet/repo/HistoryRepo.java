@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public interface HistoryRepo extends JpaRepository<History, Long> {
 
-    @Query("SELECT s FROM History s WHERE s.user.id = :userId")
+    @Query("SELECT h FROM History h WHERE h.user.id = :userId")
     Optional<List<History>> findByUserId(@Param("userId") Long userId);
 
     @Transactional

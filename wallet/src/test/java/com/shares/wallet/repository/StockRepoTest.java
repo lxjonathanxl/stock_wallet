@@ -120,7 +120,7 @@ public class StockRepoTest {
                 stockToTest1.getName()
         );
 
-        BigDecimal stockAfterChange = stocksRepo.lookForStockQuant(
+        BigDecimal stockQuantityAfterChange = stocksRepo.lookForStockQuant(
                 stockToTest1.getName(),
                 user.getId()
         ).get();
@@ -128,8 +128,8 @@ public class StockRepoTest {
         //Assert
         Assertions.assertThat(changeQuantityResult)
                 .isEqualTo(1);
-        Assertions.assertThat(stockAfterChange).isNotNull();
-        Assertions.assertThat(stockAfterChange)
+        Assertions.assertThat(stockQuantityAfterChange).isNotNull();
+        Assertions.assertThat(stockQuantityAfterChange)
                 .isEqualByComparingTo(quantityAfterChange);
 
     }

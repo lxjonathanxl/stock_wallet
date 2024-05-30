@@ -54,8 +54,6 @@ public class UserRepositoryTest {
                 .password("userTest")
                 .build();
 
-        Long userId = userTest.getId();
-
         usersRepo.save(userTest);
 
         //Act
@@ -81,7 +79,7 @@ public class UserRepositoryTest {
 
         //Act
         String userPasswordTest = usersRepo.findUserPassword(
-                userTest.getPassword());
+                userTest.getUsername());
 
         //Assert
         Assertions.assertThat(userPasswordTest).isNotNull();
@@ -145,7 +143,7 @@ public class UserRepositoryTest {
         String usernameBeforeChange = "userTest";
         String usernameAfterChange = "userTested";
         Users userTest = new Users(usernameBeforeChange,
-                "Ren@ta1234");
+                "UserTest@1234");
 
         userTest = usersRepo.save(userTest);
 
@@ -168,8 +166,8 @@ public class UserRepositoryTest {
     @Test
     public void UserRepository_ChangePassword_ReturnNofChangedRows() {
         //Arrange
-        String passwordBeforeChange = "Ren@ta1234";
-        String passwordAfterChange = "Ren@ta12345";
+        String passwordBeforeChange = "UserTest@1234";
+        String passwordAfterChange = "UserTested@1234";
         Users userTest = new Users("userTest",
                 passwordBeforeChange);
 
