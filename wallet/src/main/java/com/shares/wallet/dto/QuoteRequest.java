@@ -17,7 +17,7 @@ public class QuoteRequest {
         private final String symbol;
 
         @NotNull(message = "Shares field empty")
-        @Digits(integer = Integer.MAX_VALUE, fraction = 2, message = "Invalid value for shares")
+        @Digits(integer = 10, fraction = 2, message = "Invalid value for shares")
         private final BigDecimal shares;
 
         public QuoteRequest(String symbol, BigDecimal shares) {

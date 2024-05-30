@@ -1,6 +1,7 @@
 package com.shares.wallet.services;
 
 import com.shares.wallet.Proxy.StockProxy;
+import com.shares.wallet.exceptions.ServerErrorException;
 import com.shares.wallet.model.StockDisplay;
 import com.shares.wallet.model.Stocks;
 import com.shares.wallet.model.Users;
@@ -25,11 +26,15 @@ public class StockService {
     }
 
     public Stocks findStock(Users user, String stockName) {
-        return stocksRepo.lookForStock(stockName, user.getId()).get();
+        return stocksRepo.lookForStock(stockName, user.getId())
+                .orElseThrow(() ->
+                        new ServerErrorException("Stock not found"));
     }
 
     public int updateStockBuy(Users user, BigDecimal quant, String stockName) {
-        Stocks stock = stocksRepo.lookForStock(stockName, user.getId()).get();
+        Stocks stock = stocksRepo.lookForStock(stockName, user.getId())
+                .orElseThrow(() ->
+                        new ServerErrorException("Stock not found"));
 
         quant = stock.getQuant().add(quant);
 
@@ -37,7 +42,9 @@ public class StockService {
     }
 
     public int updateStockSell(Users user, BigDecimal quant, String stockName) {
-        Stocks stock = stocksRepo.lookForStock(stockName, user.getId()).get();
+        Stocks stock = stocksRepo.lookForStock(stockName, user.getId())
+                .orElseThrow(() ->
+                        new ServerErrorException("Stock not found"));
 
         quant = stock.getQuant().subtract(quant);
 

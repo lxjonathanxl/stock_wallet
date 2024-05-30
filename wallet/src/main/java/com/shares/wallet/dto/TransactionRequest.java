@@ -17,7 +17,7 @@ public class TransactionRequest {
     private String symbol;
 
     @NotNull(message = "Shares field empty")
-    @Digits(integer = Integer.MAX_VALUE, fraction = 2, message = "Invalid value for shares")
+    @Digits(integer = 10, fraction = 2, message = "Invalid value for shares")
     private BigDecimal shares;
 
     @NotNull(message = "price field empty")

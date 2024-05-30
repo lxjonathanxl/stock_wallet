@@ -182,9 +182,14 @@ public class TransactionService {
         try {
             Users user = usersService.findUser(username);
             return  historyService.FindHistory(user);
-        } catch (UsernameNotFoundException | HistoryNotFoundException userError) {
+        } catch (UsernameNotFoundException userError) {
             //TODO logging
-            throw userError;
+            throw new HistoryNotFoundException(
+                    "Error looking for user history, username not found in database");
+        } catch (RuntimeException historyError) {
+            //TODO logging
+            throw new HistoryNotFoundException(
+                    "Error looking for user history, history not found in database");
         }
     }
 }
