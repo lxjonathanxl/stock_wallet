@@ -11,8 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -292,6 +294,113 @@ public class UsersServiceTest {
         Assertions.assertThat(result.getSucceeded()).isFalse();
         Assertions.assertThat(result.getMessage())
                 .isEqualTo("new password is weak");
+
+    }
+
+    @Test
+    public void userService_changeCashUserProfile_returnString_success() {
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        BigDecimal cashToAdd = BigDecimal.valueOf(10);
+        BigDecimal walletBefore = BigDecimal.valueOf(10);
+        BigDecimal walletAfter = BigDecimal.valueOf(20);
+
+        String message = "cash added to wallet";
+
+        when(usersService.confirmPassword(username, password))
+                .thenReturn(true);
+        when(usersRepo.findByUsername(userTest.getUsername()))
+                .thenReturn(Optional.of(userTest));
+        when(usersService.lookIntoCash(username))
+                .thenReturn(walletBefore);
+        when(usersService.updateCash(username, walletAfter))
+                .thenReturn(1);
+
+        //Act
+        String messageResult =
+                usersService.changeCashUserProfile(username, password, cashToAdd);
+
+        //Assert
+        Assertions.assertThat(messageResult).isNotNull();
+        Assertions.assertThat(messageResult).isEqualTo(message);
+
+    }
+
+    @Test
+    public void userService_changeCashUserProfile_returnString_fail_wrongPassword() {
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        BigDecimal cashToAdd = BigDecimal.valueOf(10);
+
+        String message = "wrong password";
+
+        when(usersService.confirmPassword(username, password))
+                .thenReturn(false);
+
+        //Act
+        String messageResult =
+                usersService.changeCashUserProfile(username, password, cashToAdd);
+
+        //Assert
+        Assertions.assertThat(messageResult).isNotNull();
+        Assertions.assertThat(messageResult).isEqualTo(message);
+
+    }
+
+    @Test
+    public void userService_changeCashUserProfile_returnString_fail_userNotFound() {
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        BigDecimal cashToAdd = BigDecimal.valueOf(10);
+
+        String message = "server error: handling user in database";
+
+        when(usersService.confirmPassword(username, password))
+                .thenReturn(true);
+        when(usersRepo.findByUsername(userTest.getUsername()))
+                .thenReturn(Optional.empty());
+
+        //Act
+        String messageResult =
+                usersService.changeCashUserProfile(username, password, cashToAdd);
+
+        //Assert
+        Assertions.assertThat(messageResult).isNotNull();
+        Assertions.assertThat(messageResult).isEqualTo(message);
+
+    }
+
+    @Test
+    public void userService_changeCashUserProfile_returnString_fail_DatabaseError() {
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        BigDecimal cashToAdd = BigDecimal.valueOf(10);
+        BigDecimal walletBefore = BigDecimal.valueOf(10);
+        BigDecimal walletAfter = BigDecimal.valueOf(20);
+
+        String message = "server error: handling users wallet";
+
+        when(usersService.confirmPassword(username, password))
+                .thenReturn(true);
+        when(usersRepo.findByUsername(userTest.getUsername()))
+                .thenReturn(Optional.of(userTest));
+        when(usersService.lookIntoCash(username))
+                .thenReturn(walletBefore);
+        when(usersRepo.changeCash(walletAfter, username))
+                .thenThrow(new DataAccessException("Data error") {
+                });
+
+        //Act
+        String messageResult =
+                usersService.changeCashUserProfile(username, password, cashToAdd);
+
+        //Assert
+        Assertions.assertThat(messageResult).isNotNull();
+        Assertions.assertThat(messageResult).isEqualTo(message);
 
     }
 

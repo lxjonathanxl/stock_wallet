@@ -2,6 +2,7 @@ package com.shares.wallet.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.shares.wallet.dto.TransactionRequest;
+import com.shares.wallet.exceptions.ServerErrorException;
 import com.shares.wallet.model.StockDisplay;
 import com.shares.wallet.services.TransactionService;
 import com.shares.wallet.services.UsersService;
@@ -92,7 +93,7 @@ public class HomeControllerTest {
     void home_Error_UsernameNotFoundException() throws Exception {
         // Arrange
         String errorMessage = "Error looking for user on database";
-        when(transactionService.displayStocks(anyString())).thenThrow(new UsernameNotFoundException(errorMessage));
+        when(transactionService.displayStocks(anyString())).thenThrow(new ServerErrorException(errorMessage));
 
         // Act and Assert
         mockMvc.perform(get("/"))
@@ -105,7 +106,7 @@ public class HomeControllerTest {
     void home_Error_JsonProcessingException() throws Exception {
         // Arrange
         String errorMessage = "Error looking for stock";
-        when(transactionService.displayStocks(anyString())).thenThrow(new JsonProcessingException(errorMessage) {});
+        when(transactionService.displayStocks(anyString())).thenThrow(new ServerErrorException(errorMessage));
 
         // Act and Assert
         mockMvc.perform(get("/"))

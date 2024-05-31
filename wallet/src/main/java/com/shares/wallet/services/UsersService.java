@@ -210,9 +210,11 @@ public class UsersService implements UserDetailsService {
             BigDecimal userWallet = lookIntoCash(username);
             userWallet = userWallet.add(cashToAdd);
             updateCash(username, userWallet);
-        } catch (DataAccessException | ServerErrorException dataError) {
+        } catch (DataAccessException dataError) {
             //TODO LOGGING
             return message = "server error: handling users wallet";
+        } catch (ServerErrorException serverError) {
+            return message = "server error: handling user in database";
         }
 
         return message = "cash added to wallet";

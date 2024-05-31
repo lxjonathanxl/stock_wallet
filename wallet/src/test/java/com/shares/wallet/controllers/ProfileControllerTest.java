@@ -220,18 +220,12 @@ public class ProfileControllerTest {
         //Arrange
         String username = "user";
         BigDecimal cashToAdd = BigDecimal.valueOf(20);
-        BigDecimal userWallet = BigDecimal.valueOf(40);
-        BigDecimal cashUpdate = userWallet.add(cashToAdd);
         String password = "Test@1234";
 
         String message = "cash added to wallet";
 
-        when(usersService.confirmPassword(username, password))
-                .thenReturn(true);
-        when(usersService.lookIntoCash(username))
-                .thenReturn(userWallet);
-        when(usersService.updateCash(username, cashUpdate))
-                .thenReturn(1);
+        when(usersService.changeCashUserProfile(username, password, cashToAdd))
+                .thenReturn(message);
 
         //Act and Assert
         mockMvc.perform(post("/profileCash")
@@ -253,11 +247,12 @@ public class ProfileControllerTest {
         //Arrange
         String username = "user";
         String password = "TestWrong@1234";
+        BigDecimal cashToAdd = BigDecimal.valueOf(20);
 
         String message = "wrong password";
 
-        when(usersService.confirmPassword(username, password))
-                .thenReturn(false);
+        when(usersService.changeCashUserProfile(username, password, cashToAdd))
+                .thenReturn(message);
 
         //Act and Assert
         mockMvc.perform(post("/profileCash")
@@ -279,15 +274,13 @@ public class ProfileControllerTest {
         //Arrange
         String username = "user";
         String password = "Test@1234";
+        BigDecimal cashToAdd = BigDecimal.valueOf(20);
 
         String message = "server error: " +
                 "handling users wallet";
 
-        when(usersService.confirmPassword(username, password))
-                .thenReturn(true);
-        when(usersService.lookIntoCash(username))
-                .thenThrow(new DataAccessException("data Error") {
-                });
+        when(usersService.changeCashUserProfile(username, password, cashToAdd))
+                .thenReturn(message);
 
         //Act and Assert
         mockMvc.perform(post("/profileCash")

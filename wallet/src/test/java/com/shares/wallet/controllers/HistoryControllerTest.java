@@ -60,7 +60,7 @@ public class HistoryControllerTest {
         String message = "Error looking for user history, username not found in database";
 
         when(transactionService.displayUserHistory(username))
-                .thenThrow(UsernameNotFoundException.class);
+                .thenThrow(new HistoryNotFoundException("Error looking for user history, username not found in database"));
 
         //Act and Assert
         mockMvc.perform(get("/history"))
@@ -75,7 +75,7 @@ public class HistoryControllerTest {
         String message = "Error looking for user history, history not found in database";
 
         when(transactionService.displayUserHistory(username))
-                .thenThrow(HistoryNotFoundException.class);
+                .thenThrow(new HistoryNotFoundException("Error looking for user history, history not found in database"));
 
         //Act and Assert
         mockMvc.perform(get("/history"))
