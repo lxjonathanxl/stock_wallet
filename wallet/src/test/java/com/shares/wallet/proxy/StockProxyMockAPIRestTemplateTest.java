@@ -18,7 +18,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StockProxyMockAPIRestTemplateTest {
-/*
+
     private StockProxyMockAPI proxy;
     private RestTemplate restTemplate;
 
@@ -31,30 +31,32 @@ public class StockProxyMockAPIRestTemplateTest {
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_success() throws JsonProcessingException {
         //Arrange
-        String symbol = "NFLX";
+        String symbol = "NFLXTEST";
+        String expectedResponse = "NFLX";
+
         //Act
         StockQuote result = proxy.getStockQuote(symbol);
 
         //Assert
         Assertions.assertThat(result).isNotNull();
         Assertions.assertThat(result.getSymbol())
-                .isEqualTo(symbol);
+                .isEqualTo(expectedResponse);
     }
 
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_fail_InvalidStock() throws JsonProcessingException {
         //Arrange
-        String symbol = "TestInvalidStockSymbol";
+        String symbol = "InvalidStockSymbolTEST";
 
         //Act and Assert
         assertThatThrownBy(() -> proxy.getStockQuote(symbol))
-                .isInstanceOf(HttpClientErrorException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_fail_restTemplateReturnNull() {
         //Arrange
-        String symbol = "AAPL";
+        String symbol = "AAPLTEST";
 
         RestTemplate restTemplateError = mock(RestTemplate.class);
         when(restTemplateError.getForObject(anyString(), ArgumentMatchers.any()))
@@ -66,5 +68,5 @@ public class StockProxyMockAPIRestTemplateTest {
         assertThatThrownBy(() -> proxyError.getStockQuote(symbol))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-*/
+
 }

@@ -33,6 +33,12 @@
     <logger name="com.shares.wallet.services.TransactionService" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
+    <logger name="com.shares.wallet.Proxy.StockProxy" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.shares.wallet.Proxy.StockProxyMockAPI" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
 
     <!-- Attach the appender to the root logger -->
     <root level="info">
