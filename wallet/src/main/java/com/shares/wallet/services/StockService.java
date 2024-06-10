@@ -6,6 +6,8 @@ import com.shares.wallet.model.StockDisplay;
 import com.shares.wallet.model.Stocks;
 import com.shares.wallet.model.Users;
 import com.shares.wallet.repo.StocksRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @Service
 public class StockService {
 
+    private final static Logger stockServiceLogger = LoggerFactory.getLogger(StockService.class);
     private final StocksRepo stocksRepo;
 
     public StockService(StocksRepo stocksRepo) {
@@ -32,6 +35,9 @@ public class StockService {
     }
 
     public int updateStockBuy(Users user, BigDecimal quant, String stockName) {
+        stockServiceLogger.info("Trying to update stock, action of buying stock," +
+                "stock: {}, user: {}", stockName, user.getUsername());
+
         Stocks stock = stocksRepo.lookForStock(stockName, user.getId())
                 .orElseThrow(() ->
                         new ServerErrorException("Stock not found"));
@@ -42,6 +48,9 @@ public class StockService {
     }
 
     public int updateStockSell(Users user, BigDecimal quant, String stockName) {
+        stockServiceLogger.info("Trying to update stock, action of selling stock, " +
+                "stock: {}, user: {}", stockName, user.getUsername());
+
         Stocks stock = stocksRepo.lookForStock(stockName, user.getId())
                 .orElseThrow(() ->
                         new ServerErrorException("Stock not found"));
@@ -56,10 +65,14 @@ public class StockService {
     }
 
     public Stocks insertStock(Users user, BigDecimal quant, String stockName) {
-       return stocksRepo.addStock(user, stockName, quant);
+        stockServiceLogger.info("Trying to insert stock, stock: {}, user: {}"
+        ,stockName, user.getUsername());
+        return stocksRepo.addStock(user, stockName, quant);
     }
 
     public int deleteStock(Users user, String stockName) {
+        stockServiceLogger.info("Trying to delete stock, stock: {}, user: {}"
+                ,stockName, user.getUsername());
         return stocksRepo.deleteStock(user.getId(), stockName);
     }
 
