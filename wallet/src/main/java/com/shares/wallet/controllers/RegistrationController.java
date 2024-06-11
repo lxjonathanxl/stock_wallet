@@ -3,6 +3,8 @@ package com.shares.wallet.controllers;
 import com.shares.wallet.dto.RegistrationRequest;
 import com.shares.wallet.model.MessageController;
 import com.shares.wallet.services.RegistrationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,7 @@ import java.util.Map;
 @RequestMapping("/register")
 public class RegistrationController {
 
+    private final static Logger registrationControllerLogger = LoggerFactory.getLogger(RegistrationController.class);
     private final RegistrationService registrationService;
 
     public RegistrationController(RegistrationService registrationService) {
@@ -33,6 +36,8 @@ public class RegistrationController {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
+            registrationControllerLogger.warn("Client tried to register but some field on the form had invalid value " +
+                    "message: {}", message);
             return "redirect:/register";
         }
 
@@ -40,9 +45,13 @@ public class RegistrationController {
         redirectAttributes.addFlashAttribute("message", registrationResult.getMessage());
 
         if (!registrationResult.getSucceeded()) {
+            registrationControllerLogger.warn("Client registration failed " +
+                    "message: {}", registrationResult.getMessage());
             return "redirect:/register";
         }
 
+        registrationControllerLogger.info("new user registered, username: {}",
+                request.getUsername());
         return "redirect:/login";
     }
 

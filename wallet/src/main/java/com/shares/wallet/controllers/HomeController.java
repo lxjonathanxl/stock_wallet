@@ -5,6 +5,8 @@ import com.shares.wallet.dto.TransactionRequest;
 import com.shares.wallet.model.StockDisplay;
 import com.shares.wallet.services.TransactionService;
 import com.shares.wallet.services.UsersService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    private final static Logger homeControllerLogger = LoggerFactory.getLogger(HomeController.class);
     private final TransactionService transactionService;
     private final UsersService usersService;
     public HomeController(TransactionService transactionService, UsersService usersService) {
@@ -63,9 +66,15 @@ public class HomeController {
             Principal principal, Errors errors, HttpSession session,
             RedirectAttributes redirectAttributes
     ) {
+
+        String username = principal.getName();
+
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("Client tried to buy stock through home page" +
+                    " but some field on the form had invalid value " +
+                    "message: {}", message);
             return "redirect:/";
         }
 
@@ -81,6 +90,9 @@ public class HomeController {
         if (stockRequested == null) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("client tried to buy through home page " +
+                    "but stock in request was not found in user session, " +
+                    "user: {}, stock: {}", username, request.getSymbol());
             return "redirect:/";
         }
 
@@ -90,13 +102,18 @@ public class HomeController {
         if (!buyConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("client tried to buy through home page " +
+                    "but information in request field did not match stock info in user session, " +
+                    "user: {}, stock: {}, stockRequest: {}, stockInSession: {}",
+                    username, request.getSymbol(), request, buyConfirmRequest);
             return "redirect:/";
         }
 
-        String username = principal.getName();
-
         String message = transactionService.buy(buyConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
+        homeControllerLogger.info("user brought stock through home page, " +
+                "user: {}, stock: {}, quant: {}",
+                username, request.getSymbol(), request.getShares());
         return "redirect:/";
 
     }
@@ -107,9 +124,15 @@ public class HomeController {
             Principal principal, Errors errors, HttpSession session,
             RedirectAttributes redirectAttributes
     ) {
+
+        String username = principal.getName();
+
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("Client tried to sell stock through home page" +
+                    " but some field on the form had invalid value " +
+                    "message: {}", message);
             return "redirect:/";
         }
 
@@ -125,6 +148,9 @@ public class HomeController {
         if (stockRequested == null) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("client tried to sell through home page " +
+                    "but stock in request was not found in user session, " +
+                    "user: {}, stock: {}", username, request.getSymbol());
             return "redirect:/";
         }
 
@@ -134,13 +160,17 @@ public class HomeController {
         if (!sellConfirmRequest.equals(request)) {
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
+            homeControllerLogger.warn("client tried to sell through home page " +
+                            "but information in request field did not match stock info in user session, " +
+                            "user: {}, stock: {}, stockRequest: {}, stockInSession: {}",
+                    username, request.getSymbol(), request, sellConfirmRequest);
             return "redirect:/";
         }
 
-        String username = principal.getName();
-
         String message = transactionService.sell(sellConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
+        homeControllerLogger.info("client sold stock through home page," +
+                " user: {}, stock: {}, quant: {}", username, request.getSymbol(), request.getShares());
         return "redirect:/";
 
     }

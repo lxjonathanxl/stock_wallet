@@ -4,6 +4,8 @@ import com.shares.wallet.exceptions.DatabaseException;
 import com.shares.wallet.exceptions.ServerErrorException;
 import com.shares.wallet.model.MessageController;
 import com.shares.wallet.services.UsersService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,7 @@ import java.security.Principal;
 @Controller
 public class ProfileController {
 
+    private final static Logger profileControllerLogger = LoggerFactory.getLogger(ProfileController.class);
     private final UsersService usersService;
     public ProfileController(UsersService usersService) {
         this.usersService = usersService;
@@ -49,6 +52,8 @@ public class ProfileController {
         redirectAttributes.addFlashAttribute("message", message.getMessage());
 
         if (!message.getSucceeded()) {
+            profileControllerLogger.warn("User tried to change username but process failed, " +
+                    "original username: {}, attempted new username: {}", username, newUsername);
             return "redirect:/profile";
         }
 
@@ -68,19 +73,24 @@ public class ProfileController {
                                  Principal principal, RedirectAttributes redirectAttributes,
                                  HttpServletRequest request, HttpServletResponse response) {
 
+        String username = principal.getName();
+
         if (!newPassword.equals(confirmNewPassword)) {
+            profileControllerLogger.warn("user tried to change password but password on request doesn't match user password on database, " +
+                    "user: {}", username);
             String message = "new password and confirmation mismatch";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/profile";
         }
 
-        String username = principal.getName();
         MessageController message;
 
         message = usersService.changePassword(username, oldPassword, newPassword);
         redirectAttributes.addFlashAttribute("message", message.getMessage());
 
         if (!message.getSucceeded()) {
+            profileControllerLogger.warn("User tried to change password but process failed, " +
+                    "username: {}, message: {}", username, message.getMessage());
             return "redirect:/profile";
         }
 
@@ -103,6 +113,8 @@ public class ProfileController {
         String message = usersService.changeCashUserProfile(username, password, cashToAdd);
 
         redirectAttributes.addFlashAttribute("message", message);
+        profileControllerLogger.info("result of user adding cash to profile, " +
+                "message: {}, user: {}", message, username);
         return "redirect:/profile";
     }
 }

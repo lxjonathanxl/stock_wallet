@@ -6,6 +6,8 @@ import com.shares.wallet.dto.TransactionRequest;
 import com.shares.wallet.model.GlobalQuote;
 import com.shares.wallet.model.StockQuote;
 import com.shares.wallet.services.TransactionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -22,6 +24,7 @@ import java.math.BigDecimal;
 @Controller
 public class QuoteController {
 
+    private final static Logger quoteControllerLogger = LoggerFactory.getLogger(QuoteController.class);
     private final TransactionService transactionService;
 
     public QuoteController(TransactionService transactionService) {
@@ -40,6 +43,9 @@ public class QuoteController {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
+            quoteControllerLogger.warn("Client tried to quote stock" +
+                    " but some field on the form had invalid value " +
+                    "message: {}", message);
             return "redirect:/quote";
         }
 
@@ -48,6 +54,8 @@ public class QuoteController {
         try {
             StockQuote stock = transactionService.lookUpStock(request);
             if (stock.getSymbol() == null) {
+                quoteControllerLogger.warn("invalid stock symbol on request," +
+                        "Stock: {}", request.getSymbol());
                 message = "Invalid stock symbol";
                 redirectAttributes.addFlashAttribute("message", message);
                 return "redirect:/quote";

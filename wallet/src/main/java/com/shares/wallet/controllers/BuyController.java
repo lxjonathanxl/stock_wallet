@@ -6,6 +6,8 @@ import com.shares.wallet.dto.TransactionRequest;
 import com.shares.wallet.model.GlobalQuote;
 import com.shares.wallet.model.StockQuote;
 import com.shares.wallet.services.TransactionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -21,6 +23,7 @@ import java.security.Principal;
 @Controller
 public class BuyController {
 
+    private final static Logger buyControllerLogger = LoggerFactory.getLogger(BuyController.class);
     private final TransactionService transactionService;
 
     public BuyController(TransactionService transactionService, HttpServletRequest request) {
@@ -40,6 +43,9 @@ public class BuyController {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
+            buyControllerLogger.warn("Client tried to quote stock to buy" +
+                    " but some field on the form had invalid value " +
+                    "message: {}", message);
             return "redirect:/buy";
         }
 
@@ -51,6 +57,9 @@ public class BuyController {
             if (stock.getSymbol() == null) {
                 message = "Invalid stock symbol";
                 redirectAttributes.addFlashAttribute("message", message);
+                buyControllerLogger.warn("Client tried to quote stock to buy " +
+                        "but had invalid stock symbol on request," +
+                        "Stock: {}", request.getSymbol());
                 return "redirect:/buy";
             }
 
@@ -69,9 +78,12 @@ public class BuyController {
 
             session.setAttribute("buyConfirmRequest", buyConfirm);
 
-        } catch (JsonProcessingException | IllegalArgumentException e) {
+        } catch (JsonProcessingException | IllegalArgumentException error) {
             message = "Error looking for stock";
             redirectAttributes.addFlashAttribute("message", message);
+            buyControllerLogger.error("Client tried to quote stock to buy " +
+                    "error problems finding stock through api," +
+                    "Stock: {}", request.getSymbol(), error);
             return "redirect:/buy";
         }
 
@@ -84,7 +96,12 @@ public class BuyController {
             Principal principal, Errors errors, HttpSession session,
             RedirectAttributes redirectAttributes
     ) {
+
+        String username = principal.getName();
+
         if (errors.hasErrors()) {
+            buyControllerLogger.warn("user tried to confirm purchase but confirmation request had invalid value in field, " +
+                    "stock: {}, user: {}, request: {}", request.getSymbol(), username, request);
             String message = errors.getFieldError().getDefaultMessage();
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/buy";
@@ -94,16 +111,18 @@ public class BuyController {
         session.removeAttribute("buyConfirmRequest");
 
         if (!buyConfirmRequest.equals(request)) {
+            buyControllerLogger.warn("user tried to confirm purchase but confirmation request stock didn't matched stock saved in session, " +
+                    "stock: {}, user: {}, requestConfirmation: {}, requestInSession: {}", request.getSymbol(), username, request, buyConfirmRequest);
             String message = "Invalid request";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/buy";
 
         }
 
-        String username = principal.getName();
-
         String message = transactionService.buy(buyConfirmRequest, username);
         redirectAttributes.addFlashAttribute("message", message);
+        buyControllerLogger.info("purchase result message: {}, stock: {}, user: {}",
+                message ,request.getSymbol(), username);
         return "redirect:/";
 
     }
