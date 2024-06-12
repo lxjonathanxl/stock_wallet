@@ -80,6 +80,7 @@ services:
       MONGODB_HOST: $MONGODB_HOST
     volumes:
       - .m2:/root/.m2
+      - $LOG_PATH/log:/log
     stdin_open: true
     tty: true
 
