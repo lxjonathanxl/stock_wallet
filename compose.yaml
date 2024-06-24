@@ -1,5 +1,20 @@
 version: '3.8'
 services:
+  kafka:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9094:9094'
+    networks:
+      spring-mockstock-network:
+    environment:
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+
   mongo_db:
     image: mongo:5.0.2
     restart: unless-stopped
@@ -50,6 +65,20 @@ services:
       DB_SPRING_URL: $WALLET_SPRING_DB_URL
       DB_DOCKER_URL: $WALLET_DOCKER_DB_URL
       DOCKER_DB_PASSWORD: $WALLET_DOCKER_DB_PASSWORD
+    restart: on-failure
+
+  email-notification-api:
+    container_name: email-notification-api
+    build:
+      context: ./notificationApi
+      dockerfile: Dockerfile
+    env_file: ./.env
+    volumes:
+      - $LOG_PATH/log:/log
+    ports:
+      - $NOTIFICATION_LOCAL_PORT:$NOTIFICATION_DOCKER_PORT
+    networks:
+      spring-mockstock-network:
     restart: on-failure
 
   mock-stock-data-server:

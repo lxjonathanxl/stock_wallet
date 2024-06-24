@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo (2)" />
         <module name="AuthorizationServerMockStock" />
+        <module name="notificationApi" />
+        <module name="demo (2)" />
         <module name="demo (1)" />
       </profile>
     </annotationProcessing>
@@ -29,6 +30,7 @@
       <module name="demo (1)" options="-parameters" />
       <module name="demo (2)" options="-parameters" />
       <module name="mockStock" options="-parameters" />
+      <module name="notificationApi" options="-parameters" />
       <module name="wallet" options="-parameters" />
     </option>
   </component>
