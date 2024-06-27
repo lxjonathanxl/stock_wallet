@@ -17,19 +17,24 @@ import java.util.List;
 public class HistoryService {
 
     private final HistoryRepo historyRepo;
+    private final NotificationService notificationService;
 
     private final static Logger historyServiceLogger = LoggerFactory.getLogger(HistoryService.class);
 
-    public HistoryService(HistoryRepo historyRepo) {
+    public HistoryService(HistoryRepo historyRepo, NotificationService notificationService) {
         this.historyRepo = historyRepo;
+        this.notificationService = notificationService;
     }
 
     public History InsertHistory(Users user, String action, BigDecimal quant, TransactionRequest request) {
 
         historyServiceLogger.info("trying to insert history in database, user: {}, action: {}"
                 , user.getUsername(), action);
-        return historyRepo.addHistory(user, request.getSymbol(), quant, request.getPrice(), action);
+        History resultHistory = historyRepo.addHistory(user, request.getSymbol(), quant, request.getPrice(), action);
 
+        notificationService.notify(resultHistory);
+
+        return resultHistory;
     }
 
     public List<History> FindHistory(Users user) {

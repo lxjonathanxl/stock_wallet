@@ -39,6 +39,15 @@
     <logger name="com.shares.wallet.Proxy.StockProxyMockAPI" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
+    <logger name="com.shares.wallet.Proxy.notification.kafka.KafkaConfig" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.shares.wallet.Proxy.notification.kafka.KafkaProducerService" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.shares.wallet.Proxy.notification.kafka.KafKaConsumerService" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
     <logger name="com.shares.wallet.infra.ControllerExceptionHandler" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
@@ -60,6 +69,7 @@
     <logger name="com.shares.wallet.controllers.SellController" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
+
 
     <!-- Attach the appender to the root logger -->
     <root level="info">

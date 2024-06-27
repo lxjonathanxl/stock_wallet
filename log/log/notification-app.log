@@ -1,0 +1,31 @@
+2024-06-25 23:05:27.084 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-25 23:05:27.187 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-25 23:06:43.350 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 93.322 seconds (process running for 109.778)
+2024-06-26 00:57:01.995 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 00:57:02.197 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 00:58:05.870 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 72.472 seconds (process running for 91.847)
+2024-06-26 01:08:08.351 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 01:08:08.497 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 01:09:22.125 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 89.904 seconds (process running for 112.691)
+2024-06-26 01:31:38.367 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 01:31:38.505 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 01:32:17.789 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 47.56 seconds (process running for 56.492)
+2024-06-26 18:59:32.371 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 18:59:32.441 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 18:59:59.967 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 33.899 seconds (process running for 45.991)
+2024-06-26 19:18:12.237 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 19:18:12.349 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 19:19:23.316 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 89.246 seconds (process running for 120.364)
+2024-06-26 20:06:48.039 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 20:06:48.202 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 20:07:45.512 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 67.367 seconds (process running for 100.279)
+2024-06-26 20:41:11.086 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 20:41:11.526 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 20:42:13.272 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 72.635 seconds (process running for 84.707)
+2024-06-26 20:44:15.817 [http-nio-8093-exec-1] INFO  c.a.n.c.NotificationController - api was called and will return: true
+2024-06-26 22:37:15.608 [main] INFO  c.a.n.NotificationApiApplication - Starting NotificationApiApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-26 22:37:15.786 [main] INFO  c.a.n.NotificationApiApplication - No active profile set, falling back to 1 default profile: "default"
+2024-06-26 22:38:15.620 [main] INFO  c.a.n.NotificationApiApplication - Started NotificationApiApplication in 80.692 seconds (process running for 117.567)
+2024-06-26 22:48:58.009 [http-nio-8093-exec-1] INFO  c.a.n.c.NotificationController - api was called and will return: true
+2024-06-26 22:49:04.248 [http-nio-8093-exec-2] INFO  c.a.n.c.NotificationController - api was called and will return: false
+2024-06-26 22:49:04.759 [http-nio-8093-exec-3] INFO  c.a.n.c.NotificationController - api was called and will return: true

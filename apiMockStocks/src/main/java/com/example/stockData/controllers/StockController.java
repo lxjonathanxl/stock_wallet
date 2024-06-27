@@ -39,7 +39,7 @@ public class StockController {
 
         json = stockService.findBySymbol(symbol);
 
-        stockControllerLogger.info("user attempt to find stock");
+        stockControllerLogger.info("user attempt to save stock");
 
         return new ResponseEntity<>(json, HttpStatus.OK);
     }
