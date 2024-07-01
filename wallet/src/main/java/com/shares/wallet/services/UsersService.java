@@ -65,7 +65,6 @@ public class UsersService implements UserDetailsService {
         try {
             usersRepo.save(user);
         } catch (RuntimeException e) {
-            //TODO logging
             userServiceLogger
                     .error("Error while calling usersRepo.save() method with user with username {}",
                             user.getUsername(), e);
@@ -136,6 +135,62 @@ public class UsersService implements UserDetailsService {
         userServiceLogger.info("user with id: {} username changed from: {} to: {}",
                 userId ,username, newUsername);
         message.setMessage("Username changed");
+        message.setSucceeded(true);
+        return message;
+    }
+
+    public MessageController changeEmail(String username, String password, String newEmail) {
+
+        MessageController message = new MessageController();
+
+        boolean userExists = usersRepo.findByUsername(username)
+                .isPresent();
+
+        if (!userExists) {
+            userServiceLogger.error("while trying to change user email," +
+                    " with username: {} user was not found on database", username);
+            message.setMessage("Server error: unable to find user");
+            message.setSucceeded(false);
+            return message;
+        }
+
+        if (!confirmPassword(username, password))
+        {
+            userServiceLogger.error("while trying to change user email," +
+                            " with username: {} received password does not match with user password saved on database ",
+                    username);
+            message.setMessage("wrong password!!");
+            message.setSucceeded(false);
+            return message;
+        }
+
+        boolean newEmailIsTaken = usersRepo.findByEmail(newEmail)
+                .isPresent();
+
+        if (newEmailIsTaken) {
+            userServiceLogger.error("while trying to change user email," +
+                            " with username: {} new email was found on database, making it unavailable",
+                    username);
+            message.setMessage("email unavailable");
+            message.setSucceeded(false);
+            return message;
+        }
+
+        try {
+            usersRepo.changeEmail(newEmail, username);
+        } catch (RuntimeException dataError) {
+            userServiceLogger
+                    .error("Error while calling usersRepo.changeEmail(newEmail, username) method " +
+                                    "with new email: {} and username: {}",
+                            newEmail, username, dataError);
+            message.setMessage("server error: unable to change email");
+            message.setSucceeded(false);
+            return message;
+        }
+
+        userServiceLogger.info("user with username: {} email changed to: {}",
+                username, newEmail);
+        message.setMessage("Email changed");
         message.setSucceeded(true);
         return message;
     }

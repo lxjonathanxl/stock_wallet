@@ -33,6 +33,7 @@ public class RegistrationServiceTest {
         request = RegistrationRequest.builder()
                 .username("userTest")
                 .password("Test@1234")
+                .email("emailTest@gmail.com")
                 .confirmation("Test@1234")
                 .build();
     }

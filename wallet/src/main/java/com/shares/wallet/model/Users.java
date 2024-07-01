@@ -26,15 +26,17 @@ public class Users implements UserDetails {
     private Long id;
     private String username;
     private String password;
+    private String email;
     private BigDecimal cash = BigDecimal.valueOf(10000.00);
 
     public Users() {
 
     }
 
-    public Users(String username, String password) {
+    public Users(String username, String password, String email) {
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
 
@@ -52,6 +54,8 @@ public class Users implements UserDetails {
         return password;
     }
 
+    public String getEmail() {return email;}
+
     public BigDecimal getCash() {
         return cash;
     }
@@ -67,6 +71,8 @@ public class Users implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setEmail(String email) {this.email = email;}
 
     public void setCash(BigDecimal cash) {
         this.cash = cash;

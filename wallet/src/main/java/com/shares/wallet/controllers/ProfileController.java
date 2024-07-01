@@ -1,9 +1,12 @@
 package com.shares.wallet.controllers;
 
+import com.shares.wallet.dto.ChangeEmailRequest;
 import com.shares.wallet.exceptions.DatabaseException;
 import com.shares.wallet.exceptions.ServerErrorException;
 import com.shares.wallet.model.MessageController;
 import com.shares.wallet.services.UsersService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -12,7 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -66,6 +71,37 @@ public class ProfileController {
 
     }
 
+    @PostMapping("/profileEmail")
+    public String changeEmail(@Valid @ModelAttribute ChangeEmailRequest changeEmailRequest,
+                              Errors errors,
+                              Principal principal, RedirectAttributes redirectAttributes
+                              ) {
+
+        if (errors.hasErrors()) {
+            profileControllerLogger.warn("Client tried to change email but used invalid email on field" +
+                    " email:{}", changeEmailRequest.getEmail());
+            String message = errors.getFieldError().getDefaultMessage();
+            redirectAttributes.addFlashAttribute("message", message);
+            return "redirect:/profile";
+        }
+
+        String username = principal.getName();
+        String newEmail = changeEmailRequest.getEmail();
+        String password = changeEmailRequest.getPassword();
+        MessageController message;
+
+        message = usersService.changeEmail(username, password, newEmail);
+        redirectAttributes.addFlashAttribute("message", message.getMessage());
+
+        if (!message.getSucceeded()) {
+            profileControllerLogger.warn("User tried to change email but process failed, " +
+                    "username: {}, attempted new email: {}", username, newEmail);
+            return "redirect:/profile";
+        }
+
+        return "redirect:/profile";
+
+    }
     @PostMapping("/profilePassword")
     public String changePassword(@RequestParam("password") String oldPassword,
                                  @RequestParam("new_password") String newPassword,

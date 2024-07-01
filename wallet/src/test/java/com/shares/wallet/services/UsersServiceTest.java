@@ -38,6 +38,7 @@ public class UsersServiceTest {
         userTest = Users.builder()
                 .username("usernameTest")
                 .password("Test@1234")
+                .email("testEmail@gmail.com")
                 .build();
     }
 
@@ -181,6 +182,115 @@ public class UsersServiceTest {
         Assertions.assertThat(result.getMessage())
                 .isEqualTo("username unavailable");
     }
+
+    @Test
+    public void usersService_changeEmail_returnMessageController_Success() {
+
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        String email = userTest.getEmail();
+        String newEmail = "emailTestChanged@gmail.com";
+
+        when(usersRepo.findByUsername(username))
+                .thenReturn(Optional.of(userTest));
+        when(usersRepo.findUserPassword(username))
+                .thenReturn(password);
+        when(passwordEncoder.matches(password, password))
+                .thenReturn(true);
+        when(usersRepo.findByEmail(newEmail))
+                .thenReturn(Optional.empty());
+        when(usersRepo.changeEmail(newEmail, username))
+                .thenReturn(1);
+
+        //Act
+        MessageController result = usersService
+                .changeEmail(username, password, newEmail);
+
+        //Assert
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getSucceeded()).isTrue();
+        Assertions.assertThat(result.getMessage())
+                .isEqualTo("Email changed");
+    }
+
+    @Test
+    public void usersService_changeEmail_returnMessageController_Fail_UserNotFound() {
+
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        String newEmail = "emailTestChanged@gmail.com";
+
+        when(usersRepo.findByUsername(username))
+                .thenReturn(Optional.empty());
+
+        //Act
+        MessageController result = usersService
+                .changeEmail(username, password, newEmail);
+
+        //Assert
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getSucceeded()).isFalse();
+        Assertions.assertThat(result.getMessage())
+                .isEqualTo("Server error: unable to find user");
+    }
+
+    @Test
+    public void usersService_changeEmail_returnMessageController_Fail_WrongPassword() {
+
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        String newEmail = "emailTestChanged@gmail.com";
+
+
+        when(usersRepo.findByUsername(username))
+                .thenReturn(Optional.of(userTest));
+        when(usersRepo.findUserPassword(username))
+                .thenReturn(password);
+        when(passwordEncoder.matches(password, password))
+                .thenReturn(false);
+
+        //Act
+        MessageController result = usersService
+                .changeEmail(username, password, newEmail);
+
+        //Assert
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getSucceeded()).isFalse();
+        Assertions.assertThat(result.getMessage())
+                .isEqualTo("wrong password!!");
+    }
+
+    @Test
+    public void usersService_changeEmail_returnMessageController_Fail_emailTaken() {
+
+        //Arrange
+        String username = userTest.getUsername();
+        String password = userTest.getPassword();
+        String newEmail = "emailTestChanged@gmail.com";
+
+        when(usersRepo.findByUsername(username))
+                .thenReturn(Optional.of(userTest));
+        when(usersRepo.findUserPassword(username))
+                .thenReturn(password);
+        when(passwordEncoder.matches(password, password))
+                .thenReturn(true);
+        when(usersRepo.findByEmail(newEmail))
+                .thenReturn(Optional.of(userTest));
+
+        //Act
+        MessageController result = usersService
+                .changeEmail(username, password, newEmail);
+
+        //Assert
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getSucceeded()).isFalse();
+        Assertions.assertThat(result.getMessage())
+                .isEqualTo("email unavailable");
+    }
+
 
     @Test
     public void usersService_changePassword_ReturnMessageController_success() {

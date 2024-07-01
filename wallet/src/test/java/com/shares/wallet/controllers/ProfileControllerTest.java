@@ -216,6 +216,93 @@ public class ProfileControllerTest {
     }
 
     @Test
+    void postChangeEmail_succeed() throws Exception {
+        String username = "user";
+        String password = "Test@1234";
+        String newEmail = "testEmail@gmail.com";
+
+        MessageController resultTest = MessageController
+                .builder()
+                .message("email changed")
+                .succeeded(true)
+                .build();
+
+        when(usersService.changeEmail(username, password, newEmail))
+                .thenReturn(resultTest);
+
+        //Act and Assert
+        mockMvc.perform(post("/profileEmail")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content(EntityUtils.toString(
+                                new UrlEncodedFormEntity(Arrays.asList(
+                                        new BasicNameValuePair("email", newEmail),
+                                        new BasicNameValuePair("password", password)
+                                ))
+                        )))
+                .andExpect(view().name("redirect:/profile"))
+                .andExpect(redirectedUrl("/profile"))
+                .andExpect(flash().attribute("message", resultTest.getMessage()));
+    }
+
+    @Test
+    void postChangeEmail_fail_invalidEmail() throws Exception {
+        //Arrange
+        String message = "Invalid email";
+
+        //Act and Assert
+        mockMvc.perform(post("/profileEmail")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content(EntityUtils.toString(
+                                new UrlEncodedFormEntity(Arrays.asList(
+                                        new BasicNameValuePair(
+                                                "email", "invalidEmail"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "password", "Test@1234"
+                                        )
+                                )
+
+                                )
+                        )))
+                .andExpect(view().name("redirect:/profile"))
+                .andExpect(redirectedUrl("/profile"))
+                .andExpect(flash().attribute("message", message));
+    }
+
+    @Test
+    void postChangeEmail_fail_usersService() throws Exception {
+        //Arrange
+        String username = "user";
+        String password = "Test@1234";
+        String newEmail = "testEmail@gmail.com";
+
+        MessageController resultTest = MessageController
+                .builder()
+                .message("Change email failed")
+                .succeeded(false)
+                .build();
+
+        when(usersService.changeEmail(username, password, newEmail))
+                .thenReturn(resultTest);
+
+        //Act and Assert
+        mockMvc.perform(post("/profileEmail")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content(EntityUtils.toString(
+                                new UrlEncodedFormEntity(Arrays.asList(
+                                        new BasicNameValuePair("email", newEmail),
+                                        new BasicNameValuePair("password", password)
+                                ))
+                        )))
+                .andExpect(view().name("redirect:/profile"))
+                .andExpect(redirectedUrl("/profile"))
+                .andExpect(flash().attribute("message", resultTest.getMessage()));
+    }
+
+    @Test
     void postAddCashController_succeed() throws Exception {
         //Arrange
         String username = "user";

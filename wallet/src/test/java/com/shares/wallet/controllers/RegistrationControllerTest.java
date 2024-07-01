@@ -59,6 +59,9 @@ public class RegistrationControllerTest {
                                         "username", "usertest"
                                 ),
                                 new BasicNameValuePair(
+                                        "email", "emailTest@gmail.com"
+                                ),
+                                new BasicNameValuePair(
                                         "password", "Test@1234"
                                 ),
                                 new BasicNameValuePair(
@@ -86,6 +89,73 @@ public class RegistrationControllerTest {
                                 new UrlEncodedFormEntity(Arrays.asList(
                                         new BasicNameValuePair(
                                                 "username", ""
+                                        ),
+                                        new BasicNameValuePair(
+                                                "email", "emailTest@gmail.com"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "password", "Test@1234"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "confirmation", "Test@1234"
+                                        )
+                                )
+
+                                )
+                        )))
+                .andExpect(view().name("redirect:/register"))
+                .andExpect(redirectedUrl("/register"))
+                .andExpect(flash().attribute("message", message));
+    }
+
+    @Test
+    void registerPost_fail_emptyEmail() throws Exception {
+        //Arrange
+        String message = "email cant be empty";
+
+        //Act and Assert
+        mockMvc.perform(post("/register")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content(EntityUtils.toString(
+                                new UrlEncodedFormEntity(Arrays.asList(
+                                        new BasicNameValuePair(
+                                                "username", "userTest"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "email", ""
+                                        ),
+                                        new BasicNameValuePair(
+                                                "password", "Test@1234"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "confirmation", "Test@1234"
+                                        )
+                                )
+
+                                )
+                        )))
+                .andExpect(view().name("redirect:/register"))
+                .andExpect(redirectedUrl("/register"))
+                .andExpect(flash().attribute("message", message));
+    }
+
+    @Test
+    void registerPost_fail_invalidEmail() throws Exception {
+        //Arrange
+        String message = "Invalid email";
+
+        //Act and Assert
+        mockMvc.perform(post("/register")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .content(EntityUtils.toString(
+                                new UrlEncodedFormEntity(Arrays.asList(
+                                        new BasicNameValuePair(
+                                                "username", "userTest"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "email", "invalidEmail"
                                         ),
                                         new BasicNameValuePair(
                                                 "password", "Test@1234"
@@ -117,6 +187,9 @@ public class RegistrationControllerTest {
                                                 "username", "userTest"
                                         ),
                                         new BasicNameValuePair(
+                                                "email", "emailTest@gmail.com"
+                                        ),
+                                        new BasicNameValuePair(
                                                 "password", "test1234"
                                         ),
                                         new BasicNameValuePair(
@@ -144,6 +217,9 @@ public class RegistrationControllerTest {
                                 new UrlEncodedFormEntity(Arrays.asList(
                                         new BasicNameValuePair(
                                                 "username", "userTest"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "email", "emailTest@gmail.com"
                                         ),
                                         new BasicNameValuePair(
                                                 "password", "Test@1234"
@@ -180,6 +256,9 @@ public class RegistrationControllerTest {
                                 new UrlEncodedFormEntity(Arrays.asList(
                                         new BasicNameValuePair(
                                                 "username", "usertest"
+                                        ),
+                                        new BasicNameValuePair(
+                                                "email", "emailTest@gmail.com"
                                         ),
                                         new BasicNameValuePair(
                                                 "password", "Test@1234"

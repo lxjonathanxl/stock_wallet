@@ -29,7 +29,7 @@ public class RegistrationService {
     public MessageController register(RegistrationRequest request) {
 
 
-        Users user = new Users(request.getUsername(), request.getPassword());
+        Users user = new Users(request.getUsername(), request.getPassword(), request.getEmail());
         MessageController message = new MessageController();
 
         try {

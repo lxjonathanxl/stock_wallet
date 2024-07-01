@@ -109,6 +109,28 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void userRepository_findUserEmail_ReturnString() {
+
+        //Arrange
+        Users userTest = Users.builder()
+                .username("userTest")
+                .password("userTest")
+                .email("userTestEmail@gmail.com")
+                .build();
+
+        usersRepo.save(userTest);
+
+        //Act
+        String emailTest = usersRepo.findUserEmail(
+                userTest.getUsername());
+
+        //Assert
+        Assertions.assertThat(emailTest).isNotNull();
+        Assertions.assertThat(emailTest)
+                .isEqualTo(userTest.getEmail());
+    }
+
+    @Test
     public void userRepository_changeCash_ReturnNofChangedRows() {
 
         //Arrange
@@ -140,10 +162,13 @@ public class UserRepositoryTest {
     @Test
     public void UserRepository_ChangeUsername_ReturnNofChangedRows() {
         //Arrange
-        String usernameBeforeChange = "userTest";
         String usernameAfterChange = "userTested";
-        Users userTest = new Users(usernameBeforeChange,
-                "UserTest@1234");
+        Users userTest = Users.builder()
+                .username("userTest")
+                .password("userTest")
+                .email("userTestEmail@gmail.com")
+                .build();
+
 
         userTest = usersRepo.save(userTest);
 
@@ -164,12 +189,44 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void UserRepository_ChangeEmail_ReturnNofChangedRows() {
+        //Arrange
+        String emailAfterChange = "userTestEmailChanged@gmail.com";
+        Users userTest = Users.builder()
+                .username("userTest")
+                .password("userTest")
+                .email("userTestEmail@gmail.com")
+                .build();
+
+
+        usersRepo.save(userTest);
+
+        //Act
+        int changeEmailResult = usersRepo.changeEmail(
+                emailAfterChange, userTest.getUsername());
+        String updatedUserEmail = usersRepo
+                .findUserEmail(userTest.getUsername());
+
+        //Assert
+        Assertions.assertThat(changeEmailResult)
+                .isEqualTo(1);
+
+        Assertions.assertThat(updatedUserEmail).isNotNull();
+        Assertions.assertThat(updatedUserEmail)
+                .isEqualTo(emailAfterChange);
+
+    }
+
+    @Test
     public void UserRepository_ChangePassword_ReturnNofChangedRows() {
         //Arrange
-        String passwordBeforeChange = "UserTest@1234";
         String passwordAfterChange = "UserTested@1234";
-        Users userTest = new Users("userTest",
-                passwordBeforeChange);
+        Users userTest = Users.builder()
+                .username("userTest")
+                .password("UserTest@1234")
+                .email("userTestEmail@gmail.com")
+                .build();
+
 
         userTest = usersRepo.save(userTest);
 

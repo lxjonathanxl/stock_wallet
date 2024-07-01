@@ -15,6 +15,8 @@ public interface UsersRepo extends JpaRepository<Users, Long> {
 
     Optional<Users> findByUsername(String username);
 
+    Optional<Users> findByEmail(String email);
+
     @Query("SELECT u.cash FROM Users u WHERE u.username = :username")
     BigDecimal findUserCash(@Param("username") String username);
 
@@ -26,6 +28,10 @@ public interface UsersRepo extends JpaRepository<Users, Long> {
 
     @Query("SELECT u.username FROM Users u WHERE u.id = :id")
     String findUserUsername(@Param("id") Long id);
+
+    @Query("SELECT u.email FROM Users u WHERE u.username = :username")
+    String findUserEmail(@Param("username") String username);
+
 
     @Transactional
     @Modifying
@@ -41,5 +47,10 @@ public interface UsersRepo extends JpaRepository<Users, Long> {
     @Modifying
     @Query("UPDATE Users u SET u.password = :password WHERE u.id = :id")
     int changePassword(@Param("password") String password, @Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Users u SET u.email = :email WHERE u.username = :username")
+    int changeEmail(@Param("email") String email, @Param("username") String username);
 
 }
