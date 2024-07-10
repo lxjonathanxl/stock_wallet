@@ -33,6 +33,9 @@
     <logger name="com.shares.wallet.services.TransactionService" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
+    <logger name="com.shares.wallet.services.NotificationService" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
     <logger name="com.shares.wallet.Proxy.StockProxy" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>

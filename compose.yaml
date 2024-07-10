@@ -97,6 +97,10 @@ services:
       - $NOTIFICATION_LOCAL_PORT:$NOTIFICATION_DOCKER_PORT
     networks:
       spring-mockstock-network:
+    environment:
+      MAIL_PORT: $MAIL_PORT
+      MAIL_PASSWORD: $MAIL_PASSWORD
+      MAIL_USERNAME: $MAIL_USERNAME
     restart: on-failure
 
   mock-stock-data-server:

@@ -21,6 +21,12 @@
     <logger name="com.api.notificationApi.controllers.NotificationController" level="INFO" >
         <appender-ref ref="FILE"/>
     </logger>
+    <logger name="com.api.notificationApi.infra.ControllerExceptionHandler" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.api.notificationApi.service.EmailSenderService" level="INFO" >
+        <appender-ref ref="FILE"/>
+    </logger>
 
     <!-- Attach the appender to the root logger -->
     <root level="info">

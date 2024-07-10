@@ -1,10 +1,15 @@
 package com.api.notificationApi.controllers;
 
+import com.api.notificationApi.dto.NotificationRequest;
 import com.api.notificationApi.service.EmailSenderService;
 import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
@@ -34,19 +39,19 @@ public class NotificationController {
     }
 
     @PostMapping("/sendEmail")
-    public String sendEmail(@RequestBody Map<String, String> request) throws MessagingException, UnsupportedEncodingException {
-        String email = request.get("email");
+    public ResponseEntity<Boolean> sendEmail(@Valid @RequestBody NotificationRequest notificationRequest,
+                                            Errors errors) throws MessagingException, UnsupportedEncodingException {
 
-        // Call the sendEmail method to send an email
-        String subject = "Hello from Spring Boot";
-        String content = "<p>Hello,</p><p>This is a test email sent from Spring Boot.</p>";
-
-        try {
-            emailSenderService.sendEmail(email, subject, content);
-            return "Email sent successfully.";
-        } catch (MessagingException | UnsupportedEncodingException e) {
-            return "Failed to send email. Error: " + e.getMessage();
+        if (errors.hasErrors()) {
+            String message = errors.getFieldError().getDefaultMessage();
+            controllerLogger.error("Client sent notification request with invalid field " +
+                    "message: {}", message);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(false);
         }
+
+        emailSenderService.sendEmail(notificationRequest);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
 }

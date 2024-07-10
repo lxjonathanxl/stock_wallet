@@ -21,18 +21,18 @@ public class StockProxyMockAPIRestTemplateTest {
 
     private StockProxyMockAPI proxy;
     private RestTemplate restTemplate;
+    private String apiUrl = "http://localhost:8090/get/";
 
     @BeforeEach
     public void init() {
         restTemplate = new RestTemplate();
-        proxy = new StockProxyMockAPI(restTemplate);
+        proxy = new StockProxyMockAPI(restTemplate, apiUrl);
     }
 
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_success() throws JsonProcessingException {
         //Arrange
-        String symbol = "NFLXTEST";
-        String expectedResponse = "NFLX";
+        String symbol = "NFLX";
 
         //Act
         StockQuote result = proxy.getStockQuote(symbol);
@@ -40,13 +40,13 @@ public class StockProxyMockAPIRestTemplateTest {
         //Assert
         Assertions.assertThat(result).isNotNull();
         Assertions.assertThat(result.getSymbol())
-                .isEqualTo(expectedResponse);
+                .isEqualTo(symbol);
     }
 
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_fail_InvalidStock() throws JsonProcessingException {
         //Arrange
-        String symbol = "InvalidStockSymbolTEST";
+        String symbol = "InvalidStockSymbol";
 
         //Act and Assert
         assertThatThrownBy(() -> proxy.getStockQuote(symbol))
@@ -56,13 +56,13 @@ public class StockProxyMockAPIRestTemplateTest {
     @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_fail_restTemplateReturnNull() {
         //Arrange
-        String symbol = "AAPLTEST";
+        String symbol = "AAPL";
 
         RestTemplate restTemplateError = mock(RestTemplate.class);
         when(restTemplateError.getForObject(anyString(), ArgumentMatchers.any()))
                 .thenReturn(null);
 
-        StockProxy proxyError = new StockProxy(restTemplateError);
+        StockProxyMockAPI proxyError = new StockProxyMockAPI(restTemplateError, apiUrl);
 
         //act and Assert
         assertThatThrownBy(() -> proxyError.getStockQuote(symbol))
