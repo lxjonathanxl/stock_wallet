@@ -24,6 +24,11 @@ jobs:
           distribution: 'corretto'
           java-version: 17
 
+      - name: Load environment variables
+        uses: direnv/direnv-action@v1
+        with:
+          env_file: .env
+          
       - name: Run unit tests for NotificationApi
         run: |
           cd notificationApi
