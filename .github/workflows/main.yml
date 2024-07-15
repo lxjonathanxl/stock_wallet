@@ -73,19 +73,16 @@ jobs:
           cd notificationApi
           mvn -B test --file pom.xml
           cd ..
-
       - name: Run unit tests for apiMockStocks
         run: |
           cd apiMockStocks
           mvn -B test --file pom.xml
           cd ..
-
       - name: Run unit tests for walletApi
         run: |
           cd wallet
           mvn -B test --file pom.xml
           cd ..
-
       - name: Stop services
         run: docker-compose down
 

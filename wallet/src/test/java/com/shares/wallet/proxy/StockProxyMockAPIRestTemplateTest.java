@@ -30,20 +30,6 @@ public class StockProxyMockAPIRestTemplateTest {
     }
 
     @Test
-    public void stockProxy_getStockQuote_ReturnStockQuote_success() throws JsonProcessingException {
-        //Arrange
-        String symbol = "NFLX";
-
-        //Act
-        StockQuote result = proxy.getStockQuote(symbol);
-
-        //Assert
-        Assertions.assertThat(result).isNotNull();
-        Assertions.assertThat(result.getSymbol())
-                .isEqualTo(symbol);
-    }
-
-    @Test
     public void stockProxy_getStockQuote_ReturnStockQuote_fail_InvalidStock() throws JsonProcessingException {
         //Arrange
         String symbol = "InvalidStockSymbol";

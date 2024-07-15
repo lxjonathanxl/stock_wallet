@@ -8,6 +8,7 @@ services:
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    restart: on-failure
     networks:
       spring-mockstock-network:
     ports:
@@ -31,6 +32,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    restart: on-failure
 
   mongo_db:
     image: mongo:5.0.2
@@ -65,15 +67,17 @@ services:
     build:
       context: ./wallet
       dockerfile: Dockerfile
+    image: finance-spring-wallet-api:latest
     env_file: ./.env
     volumes:
-      - $LOG_PATH/log:/log
+      - /log:/log
     ports:
       - $WALLET_LOCAL_PORT:$WALLET_DOCKER_PORT
     depends_on:
       - mysqldb
       - mock-stock-data-server
       - broker
+      - email-notification-api
     networks:
       spring-mockstock-network:
     environment:
@@ -90,9 +94,10 @@ services:
     build:
       context: ./notificationApi
       dockerfile: Dockerfile
+    image: finance-email-notification-api:latest
     env_file: ./.env
     volumes:
-      - $LOG_PATH/log:/log
+      - /log:/log
     ports:
       - $NOTIFICATION_LOCAL_PORT:$NOTIFICATION_DOCKER_PORT
     networks:
@@ -131,7 +136,7 @@ services:
       MONGODB_HOST: $MONGODB_HOST
     volumes:
       - .m2:/root/.m2
-      - $LOG_PATH/log:/log
+      - /log:/log
     stdin_open: true
     tty: true
 
