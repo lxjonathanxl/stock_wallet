@@ -8,6 +8,12 @@ on:
 jobs:
   build-run-test:
     runs-on: ubuntu-latest
+    env:
+      MAIL_PORT: 587
+      MAIL_USERNAME: stockwalletfinance@gmail.com
+      MAIL_PASSWORD: 'fakf pekt ciha eovb'
+
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
