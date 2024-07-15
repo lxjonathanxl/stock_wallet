@@ -13,8 +13,12 @@ FROM eclipse-temurin:17-jdk-jammy as deps
 
 WORKDIR /build
 
-# Copy the mvnw wrapper with executable permissions.
-COPY --chmod=0755 mvnw mvnw
+# Install dos2unix
+RUN apt-get update && apt-get install -y dos2unix
+
+# Copy the mvnw wrapper with executable permissions and convert line endings.
+COPY mvnw mvnw
+RUN dos2unix mvnw && chmod +x mvnw
 COPY .mvn/ .mvn/
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
@@ -64,7 +68,7 @@ RUN java -Djarmode=layertools -jar target/app.jar extract --destination target/e
 # The example below uses eclipse-turmin's JRE image as the foundation for running the app.
 # By specifying the "17-jre-jammy" tag, it will also use whatever happens to be the
 # most recent version of that tag when you build your Dockerfile.
-# If reproducability is important, consider using a specific digest SHA, like
+# If reproducibility is important, consider using a specific digest SHA, like
 # eclipse-temurin@sha256:99cede493dfd88720b610eb8077c8688d3cca50003d76d1d539b0efc8cca72b4.
 FROM eclipse-temurin:17-jre-jammy AS final
 

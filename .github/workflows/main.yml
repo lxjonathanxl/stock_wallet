@@ -1,0 +1,29 @@
+name: Build, Run, and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 17
+
+      - name: Run unit tests for NotificationApi
+        run: |
+          cd notificationApi
+          mvn -B test --file pom.xml
+  
+      - name: Build the application
+        run: |
+          cd notificationApi
+          mvn -B package --file pom.xml
