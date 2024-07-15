@@ -24,10 +24,10 @@ jobs:
           distribution: 'corretto'
           java-version: 17
 
-      - name: Load environment variables
-        uses: matootie/action-gh-dotenv@v2
+      - name: Dotenv Action
+        uses: falti/dotenv-action@v1.1.2
         with:
-          filename: .env
+          path: .env # default is .env
           
       - name: Run unit tests for NotificationApi
         run: |
