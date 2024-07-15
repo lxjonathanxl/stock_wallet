@@ -1,4 +1,4 @@
-name: Build, Run, and Test
+name: Build, Run, Test, and deploy application
 
 on:
   push:
@@ -8,11 +8,34 @@ on:
 jobs:
   build-run-test:
     runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:19.03.12
+        options: --privileged
+        ports:
+          - 8082:8082
+        env:
+          DOCKER_BUILDKIT: 1
+
     env:
       MAIL_PORT: 587
       MAIL_USERNAME: stockwalletfinance@gmail.com
-      MAIL_PASSWORD: 'fakf pekt ciha eovb'
-
+      MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+      MONGODB_USER: root
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_DATABASE: stocks
+      MONGODB_LOCAL_PORT: 27017
+      MONGODB_DOCKER_PORT: 27017
+      MONGODB_USERNAME: root
+      MONGODB_PORT: 27017
+      MONGODB_HOST: localhost
+      API_KEY: ${{ secrets.API_KEY }}
+      SPRING_DB_PASSWORD: ${{ secrets.SPRING_DB_PASSWORD }}
+      DB_USERNAME: root
+      DB_SPRING_URL: jdbc:mysql://localhost:3306/wallet
+      DB_DOCKER_URL: jdbc:mysql://mysqldb:3306/wallet
+      DOCKER_DB_PASSWORD: root
 
     steps:
       - name: Checkout code
@@ -24,17 +47,79 @@ jobs:
           distribution: 'corretto'
           java-version: 17
 
-      - name: Dotenv Action
-        uses: falti/dotenv-action@v1.1.2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.4.0
+
+      - name: Set up Docker Compose
+        run: sudo apt-get update && sudo apt-get install docker-compose -y
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3.2.0
         with:
-          path: .env # default is .env
-          
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build Docker images
+        run: docker-compose build
+
+      - name: Start services
+        run: docker-compose up -d
+
+      - name: Wait for services to be ready
+        run: sleep 180
+
       - name: Run unit tests for NotificationApi
         run: |
           cd notificationApi
           mvn -B test --file pom.xml
-  
-      - name: Build the application
+          cd ..
+
+      - name: Run unit tests for apiMockStocks
         run: |
-          cd notificationApi
-          mvn -B package --file pom.xml
+          cd apiMockStocks
+          mvn -B test --file pom.xml
+          cd ..
+
+      - name: Run unit tests for walletApi
+        run: |
+          cd wallet
+          mvn -B test --file pom.xml
+          cd ..
+
+      - name: Stop services
+        run: docker-compose down
+
+  app-deploy:
+    name: Deploy | Docker-compose
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Copy finance to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          # Github path
+          source: "**"
+          # VPS path
+          target: "~/finance"
+
+      - name: Build and Start Docker-compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd finance
+            docker compose up --build -d
