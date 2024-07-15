@@ -25,9 +25,9 @@ jobs:
           java-version: 17
 
       - name: Load environment variables
-        uses: direnv/direnv-action@v1
+        uses: matootie/action-gh-dotenv@v2
         with:
-          env_file: .env
+          filename: .env
           
       - name: Run unit tests for NotificationApi
         run: |
