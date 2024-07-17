@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(produces="application/json")
-@CrossOrigin(origins = "http://localhost:8090")
 public class StockController {
 
     private final static Logger stockControllerLogger = LoggerFactory.getLogger(StockController.class);
@@ -32,7 +31,6 @@ public class StockController {
     }
 
     @GetMapping("/get/{symbol}")
-    @CrossOrigin
     public ResponseEntity<String> getBySymbol(@PathVariable("symbol") String symbol) {
 
         String json;
