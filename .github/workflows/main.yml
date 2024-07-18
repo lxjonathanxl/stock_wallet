@@ -88,6 +88,7 @@ jobs:
 
   app-deploy:
     name: Deploy | Docker-compose
+    needs: build-run-test
     runs-on: ${{ matrix.os }}
 
     strategy:
