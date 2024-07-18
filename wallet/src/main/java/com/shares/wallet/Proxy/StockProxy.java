@@ -24,11 +24,10 @@ public class StockProxy implements StockProxyInterface {
 
     @Override
     public StockQuote getStockQuote(String symbol) throws JsonProcessingException {
-        // Make the API call
-        String apiKey = System.getenv("API_KEY");
 
+        //Api only allow 25 calls per day
         String apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="
-                + symbol + "&apikey=" + apiKey;
+                + symbol;
 
         GlobalQuote response = restTemplate.getForObject(apiUrl, GlobalQuote.class);
 

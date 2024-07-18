@@ -146,7 +146,7 @@ services:
       context: ./AuthorizationServerMockStock
       dockerfile: Dockerfile
     image: auth-server:latest
-    env_file: ./.env
+    env_file: ./.env_auth
     ports:
       - $AUTH_LOCAL_PORT:$AUTH_DOCKER_PORT
     networks:

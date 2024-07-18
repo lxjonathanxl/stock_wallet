@@ -31,7 +31,7 @@ public class TransactionService {
     private final StockService stockService;
     private final HistoryService historyService;
 
-    public TransactionService(@Qualifier("StockAPI") StockProxyInterface stockProxy, UsersService usersService, StockService stockService, HistoryService historyService) {
+    public TransactionService(@Qualifier("StockMockAPI") StockProxyInterface stockProxy, UsersService usersService, StockService stockService, HistoryService historyService) {
         this.stockProxy = stockProxy;
         this.usersService = usersService;
         this.stockService = stockService;

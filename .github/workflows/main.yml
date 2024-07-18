@@ -111,6 +111,25 @@ jobs:
           # VPS path
           target: "~/finance"
 
+      - name: Create auth server .env file
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/finance
+            rm .env_auth
+            touch .env_auth
+            echo AUTH_LOCAL_PORT=${{ secrets.AUTH_LOCAL_PORT }} >> .env
+            echo AUTH_DOCKER_PORT=${{ secrets.AUTH_DOCKER_PORT }} >> .env
+            echo AUTH_USER_PASSWORD=${{ secrets.AUTH_USER_PASSWORD }} >> .env
+            echo AUTH_USER_USERNAME=${{ secrets.AUTH_USER_USERNAME }} >> .env
+            echo AUTH_CLIENT_ID=${{ secrets.AUTH_CLIENT_ID }} >> .env
+            echo AUTH_CLIENT_SECRET=${{ secrets.AUTH_CLIENT_SECRET }} >> .env
+            echo AUTH_CLIENT_REDIRECT_URI=${{ secrets.AUTH_CLIENT_REDIRECT_URI }} >> .env
+
       - name: Build and Start Docker-compose
         uses: appleboy/ssh-action@master
         with:
