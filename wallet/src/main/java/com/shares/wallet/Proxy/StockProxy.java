@@ -27,7 +27,7 @@ public class StockProxy implements StockProxyInterface {
 
         //Api only allow 25 calls per day
         String apiUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="
-                + symbol;
+                + symbol + "&apikey=APIKEY";
 
         GlobalQuote response = restTemplate.getForObject(apiUrl, GlobalQuote.class);
 
