@@ -146,16 +146,17 @@ services:
       context: ./AuthorizationServerMockStock
       dockerfile: Dockerfile
     image: auth-server:latest
+    env_file: ./.env
     ports:
-      - 9000:9000
+      - $AUTH_LOCAL_PORT:$AUTH_DOCKER_PORT
     networks:
       - spring-mockstock-network
     environment:
-      AUTH_USER_PASSWORD: password
-      AUTH_USER_USERNAME: username
-      CLIENT_ID: stock-client
-      CLIENT_SECRET: secret
-      CLIENT_REDIRECT_URI: http://40.75.119.115:8080/authorized
+      AUTH_USER_PASSWORD: $AUTH_USER_PASSWORD
+      AUTH_USER_USERNAME: $AUTH_USER_USERNAME
+      CLIENT_ID: $AUTH_CLIENT_ID
+      CLIENT_SECRET: $AUTH_CLIENT_SECRET
+      CLIENT_REDIRECT_URI: $AUTH_CLIENT_REDIRECT_URI
 networks:
   spring-mockstock-network:
     driver: bridge

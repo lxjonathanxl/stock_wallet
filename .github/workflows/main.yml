@@ -120,15 +120,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/finance
-            rm .env_auth
-            touch .env_auth
-            echo AUTH_LOCAL_PORT=${{ secrets.AUTH_LOCAL_PORT }} >> .env_auth
-            echo AUTH_DOCKER_PORT=${{ secrets.AUTH_DOCKER_PORT }} >> .env_auth
-            echo AUTH_USER_PASSWORD=${{ secrets.AUTH_USER_PASSWORD }} >> .env_auth
-            echo AUTH_USER_USERNAME=${{ secrets.AUTH_USER_USERNAME }} >> .env_auth
-            echo AUTH_CLIENT_ID=${{ secrets.AUTH_CLIENT_ID }} >> .env_auth
-            echo AUTH_CLIENT_SECRET=${{ secrets.AUTH_CLIENT_SECRET }} >> .env_auth
-            echo AUTH_CLIENT_REDIRECT_URI=${{ secrets.AUTH_CLIENT_REDIRECT_URI }} >> .env_auth
+            sed -i 's|AUTH_CLIENT_REDIRECT_URI=.*|AUTH_CLIENT_REDIRECT_URI=\${{ secrets.AUTH_CLIENT_REDIRECT_URI }}|' .env
 
       - name: Build and Start Docker-compose
         uses: appleboy/ssh-action@master
