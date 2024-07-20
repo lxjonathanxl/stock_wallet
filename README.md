@@ -118,6 +118,10 @@ Configure the port by changing its value in __.env__ file.
 ## Testing
 After the compose container is up, you can run the tests with the fallowing commands.
 
+**Disclaimer**
+
+Env variables must be added to test environment
+
 **NotificationApi**
 ```bash
   cd notificationApi
