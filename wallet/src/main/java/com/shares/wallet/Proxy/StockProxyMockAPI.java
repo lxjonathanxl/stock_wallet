@@ -31,14 +31,14 @@ public class StockProxyMockAPI implements StockProxyInterface {
     @Override
     public StockQuote getStockQuote(String symbol) throws JsonProcessingException {
         // Make the API call
-        apiUrl = apiUrl + symbol;
+        String apiUrlGetStock = apiUrl + symbol;
 
         try {
-            StockQuote stock = restTemplate.getForObject(apiUrl, StockQuote.class);
+            StockQuote stock = restTemplate.getForObject(apiUrlGetStock, StockQuote.class);
 
             if (stock == null) {
                 stockProxyMockApi.error("Error getting response from mock stock api, symbol: {}, apiUrl: {}",
-                        symbol, apiUrl);
+                        symbol, apiUrlGetStock);
                 throw new IllegalArgumentException("Invalid Symbol");
             }
 
