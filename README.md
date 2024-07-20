@@ -76,7 +76,7 @@ This project is divided into five main parts:
 
 ## Components
 
-1. [wallet](/wallet) Spring MVC application, Created with Spring security, Kafka for messaging, Testcontainers for testing environments, Thymeleaf for server-side rendering, and JPA for database interactions.
+1. [wallet](/wallet) Spring MVC application, Created with Spring security, Kafka for messaging, Testcontainers and Junit for testing environments, Thymeleaf for server-side rendering, and JPA for database interactions.
 2. [apiMockStocks](/apiMockStocks) Spring RestApi, created with Spring security, includes dependencies for MongoDB integration, security with OAuth2, and comprehensive testing support using Testcontainers and JUnit.
 3. [notificationApi](/notificationApi) Spring RestApi, created with email support with Spring Mail, validation, and testing using Spring Boot Starter Test.
 
