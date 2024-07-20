@@ -158,7 +158,6 @@ After the compose container is up, you can run the tests with the fallowing comm
 ```
 
 ## API
-Here's a refined version of your disclaimer:
 
 **Disclaimer**
 
@@ -166,4 +165,4 @@ This application was built solely for the purpose of studying and practicing dif
 
 **Demo**
 
-example of application running: [![Watch the video](https://img.youtube.com/vi/1gbRvNPtIts/maxresdefault.jpg)](https://www.youtube.com/watch?v=1gbRvNPtIts)
+youtube video of application running: [![Watch the video](https://img.youtube.com/vi/1gbRvNPtIts/maxresdefault.jpg)](https://www.youtube.com/watch?v=1gbRvNPtIts)
