@@ -117,6 +117,7 @@ Configure the port by changing its value in __.env__ file.
 
 ## Testing
 After the compose container is up, you can run the tests with the fallowing commands.
+the application has in total 137 different tests.
 
 **Disclaimer**
 
