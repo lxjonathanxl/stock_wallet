@@ -1,0 +1,267 @@
+2024-06-29 22:11:29.275 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-29 22:11:29.284 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-06-29 22:12:39.563 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-29 22:12:39.568 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-06-29 22:13:05.661 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-29 22:13:05.665 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-06-29 22:22:44.119 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-06-29 22:22:44.206 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-06-29 22:23:54.202 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-06-29 22:24:06.979 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 89.774 seconds (process running for 96.889)
+2024-06-29 22:24:07.058 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-01 03:16:16.699 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 03:16:16.726 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 03:23:35.812 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 03:23:35.929 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 03:26:18.801 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-01 03:26:55.230 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 215.015 seconds (process running for 234.773)
+2024-07-01 03:26:55.361 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-01 03:34:45.600 [http-nio-8080-exec-3] INFO  c.s.w.services.TransactionService - finding user stock user: jony
+2024-07-01 03:35:13.481 [http-nio-8080-exec-9] INFO  c.s.w.services.RegistrationService - successfully registered user with username: cega
+2024-07-01 03:35:13.483 [http-nio-8080-exec-9] INFO  c.s.w.c.RegistrationController - new user registered, username: cega
+2024-07-01 03:35:25.122 [http-nio-8080-exec-3] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-01 03:38:35.103 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 03:38:35.125 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 03:39:02.541 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-01 03:39:12.184 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 39.111 seconds (process running for 46.15)
+2024-07-01 03:39:12.255 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-01 03:42:45.456 [http-nio-8080-exec-9] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-01 03:49:47.802 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 03:49:47.838 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 03:52:20.699 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-01 03:53:05.196 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 208.143 seconds (process running for 228.869)
+2024-07-01 03:53:05.737 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-01 03:55:47.771 [http-nio-8080-exec-7] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-01 03:56:15.341 [http-nio-8080-exec-5] WARN  c.s.w.controllers.ProfileController - Client tried to change email but used invalid email on field email:invalidEmail
+2024-07-01 03:56:39.538 [http-nio-8080-exec-10] INFO  c.s.wallet.services.UsersService - user with username: cega email changed to: segavloog@gmail.com
+2024-07-01 03:57:11.414 [http-nio-8080-exec-5] WARN  c.s.w.c.RegistrationController - Client tried to register but some field on the form had invalid value message: Invalid email
+2024-07-01 20:54:14.129 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 20:54:14.187 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 21:00:16.657 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-01 21:00:16.721 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-01 21:02:42.881 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-01 21:03:15.653 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 190.034 seconds (process running for 202.336)
+2024-07-01 21:03:16.009 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-01 21:08:13.171 [http-nio-8080-exec-7] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-01 21:08:27.386 [http-nio-8080-exec-5] INFO  c.s.w.services.TransactionService - looking up stock with symbol: NFLX
+2024-07-01 21:08:40.783 [http-nio-8080-exec-8] INFO  c.s.wallet.services.StockService - Trying to insert stock, stock: NFLX, user: cega
+2024-07-01 21:08:41.151 [http-nio-8080-exec-8] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: buy
+2024-07-01 21:08:41.765 [http-nio-8080-exec-8] INFO  c.s.w.services.TransactionService - user successfully bought stockuser: cega, stock: NFLX, quant: 2
+2024-07-01 21:08:42.104 [http-nio-8080-exec-8] INFO  c.s.wallet.controllers.BuyController - purchase result message: Stock added to portfolio, stock: NFLX, user: cega
+2024-07-01 21:08:42.205 [http-nio-8080-exec-10] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-01 21:08:44.157 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@4223b656
+2024-07-01 21:08:54.906 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - api returned true
+2024-07-04 20:02:10.980 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-04 20:02:10.986 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-04 23:24:22.446 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-04 23:24:22.481 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-04 23:26:12.351 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-04 23:26:23.558 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 130.946 seconds (process running for 146.596)
+2024-07-04 23:26:23.638 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-04 23:27:41.963 [http-nio-8080-exec-4] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-04 23:27:53.292 [http-nio-8080-exec-9] INFO  c.s.wallet.services.StockService - Trying to update stock, action of selling stock, stock: NFLX, user: cega
+2024-07-04 23:27:53.314 [http-nio-8080-exec-9] INFO  c.s.w.services.TransactionService - User sold some shares of specific stock NOT all from walletstock: NFLX, quant: 1, user: cega
+2024-07-04 23:27:53.319 [http-nio-8080-exec-9] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: sell
+2024-07-04 23:27:54.096 [http-nio-8080-exec-9] INFO  c.s.w.services.TransactionService - user successfully sold stockuser: cega, stock: NFLX, quant: 1
+2024-07-04 23:27:54.257 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@5a05dda6
+2024-07-04 23:27:54.342 [http-nio-8080-exec-9] INFO  c.s.w.controllers.HomeController - client sold stock through home page, user: cega, stock: NFLX, quant: 1
+2024-07-04 23:27:54.535 [http-nio-8080-exec-8] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-04 23:28:11.683 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - api returned true
+2024-07-08 17:20:57.054 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-08 17:20:57.071 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-08 17:21:55.384 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-08 17:21:55.405 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-08 17:22:22.721 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-08 17:22:22.729 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-08 20:04:24.407 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-08 20:04:24.523 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-08 20:06:33.002 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-08 20:06:48.022 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 151.73 seconds (process running for 164.412)
+2024-07-08 20:06:48.127 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-08 20:30:22.162 [http-nio-8080-exec-9] INFO  c.s.w.services.TransactionService - finding user stock user: jony
+2024-07-08 20:30:38.432 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-08 20:30:43.677 [http-nio-8080-exec-4] INFO  c.s.wallet.services.StockService - Trying to update stock, action of buying stock,stock: NFLX, user: cega
+2024-07-08 20:30:43.696 [http-nio-8080-exec-4] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: buy
+2024-07-08 20:30:44.434 [http-nio-8080-exec-4] INFO  c.s.w.services.TransactionService - user successfully bought stockuser: cega, stock: NFLX, quant: 2
+2024-07-08 20:30:44.659 [http-nio-8080-exec-4] INFO  c.s.w.controllers.HomeController - user brought stock through home page, user: cega, stock: NFLX, quant: 2
+2024-07-08 20:30:44.806 [http-nio-8080-exec-5] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-08 20:30:45.123 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@324386ca
+2024-07-08 20:30:45.490 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@51ce9736
+2024-07-08 20:31:03.948 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - api returned true
+2024-07-09 01:23:45.870 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:23:45.954 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:26:06.052 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:26:37.779 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:26:37.809 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:27:41.618 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:28:01.555 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:28:01.561 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:28:28.193 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:28:47.949 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:28:47.954 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:29:12.847 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:29:30.020 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:29:30.030 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:29:53.493 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:30:16.312 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:30:16.318 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:30:43.831 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:31:05.717 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:31:05.722 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:31:30.688 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:31:48.765 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:31:48.771 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:32:07.011 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:32:21.666 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:32:21.675 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:32:40.096 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:32:55.621 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 01:32:55.628 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 01:33:22.672 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 01:34:08.040 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 73.827 seconds (process running for 75.884)
+2024-07-09 01:34:08.085 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 01:35:02.813 [http-nio-8080-exec-7] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 01:35:20.407 [http-nio-8080-exec-1] INFO  c.s.wallet.services.StockService - Trying to update stock, action of buying stock,stock: NFLX, user: cega
+2024-07-09 01:35:20.429 [http-nio-8080-exec-1] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: buy
+2024-07-09 01:35:21.891 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - user successfully bought stockuser: cega, stock: NFLX, quant: 1
+2024-07-09 01:35:22.388 [http-nio-8080-exec-1] INFO  c.s.w.controllers.HomeController - user brought stock through home page, user: cega, stock: NFLX, quant: 1
+2024-07-09 01:35:22.747 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@30c2dd4d
+2024-07-09 01:35:22.897 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@45a4682e
+2024-07-09 01:35:22.916 [http-nio-8080-exec-2] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 01:35:54.489 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@1cf33c03
+2024-07-09 02:04:17.761 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 02:04:17.956 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 02:05:50.403 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 02:06:04.392 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 113.515 seconds (process running for 127.326)
+2024-07-09 02:06:04.434 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 02:23:04.851 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 02:23:04.860 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 02:23:25.129 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 02:23:32.974 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 29.253 seconds (process running for 36.386)
+2024-07-09 02:23:33.021 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 02:55:59.597 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 02:55:59.606 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 02:56:17.439 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 02:56:23.724 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 25.888 seconds (process running for 32.753)
+2024-07-09 02:56:23.780 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 02:56:59.234 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 02:57:06.840 [http-nio-8080-exec-5] INFO  c.s.wallet.services.StockService - Trying to update stock, action of buying stock,stock: NFLX, user: cega
+2024-07-09 02:57:06.865 [http-nio-8080-exec-5] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: buy
+2024-07-09 02:57:07.920 [http-nio-8080-exec-5] INFO  c.s.w.services.TransactionService - user successfully bought stockuser: cega, stock: NFLX, quant: 1
+2024-07-09 02:57:08.171 [http-nio-8080-exec-5] INFO  c.s.w.controllers.HomeController - user brought stock through home page, user: cega, stock: NFLX, quant: 1
+2024-07-09 02:57:08.286 [http-nio-8080-exec-6] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 02:57:08.628 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@129a4ab7
+2024-07-09 02:57:09.101 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@39eb215a
+2024-07-09 03:17:26.925 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 03:17:26.972 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 03:20:08.521 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 03:20:25.544 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 189.702 seconds (process running for 217.899)
+2024-07-09 03:20:25.631 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 03:21:33.939 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 03:21:51.213 [http-nio-8080-exec-8] INFO  c.s.wallet.services.StockService - Trying to update stock, action of selling stock, stock: NFLX, user: cega
+2024-07-09 03:21:51.245 [http-nio-8080-exec-8] INFO  c.s.w.services.TransactionService - User sold some shares of specific stock NOT all from walletstock: NFLX, quant: 1, user: cega
+2024-07-09 03:21:51.247 [http-nio-8080-exec-8] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: sell
+2024-07-09 03:21:51.882 [http-nio-8080-exec-8] INFO  c.s.w.services.TransactionService - user successfully sold stockuser: cega, stock: NFLX, quant: 1
+2024-07-09 03:21:52.227 [http-nio-8080-exec-8] INFO  c.s.w.controllers.HomeController - client sold stock through home page, user: cega, stock: NFLX, quant: 1
+2024-07-09 03:21:52.543 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@81f613d
+2024-07-09 03:21:52.549 [http-nio-8080-exec-9] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 03:21:52.660 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@6d0613e5
+2024-07-09 14:14:11.625 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:14:11.747 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:15:33.675 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:15:33.685 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:16:12.386 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:16:12.391 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:16:43.167 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:16:43.183 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:17:26.307 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:17:26.353 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:18:05.566 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:18:05.589 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:18:47.838 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:18:47.864 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:19:26.132 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:19:26.147 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:20:24.358 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:20:24.375 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:21:13.864 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:21:13.877 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:22:01.990 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:22:01.999 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:22:46.347 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:22:46.354 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:23:31.171 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:23:31.274 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:24:36.036 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:26:09.177 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:26:09.182 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:27:12.962 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:27:30.740 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:27:30.745 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:27:57.603 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:28:11.890 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:28:11.897 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:28:32.048 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:28:47.291 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:28:47.296 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:29:10.863 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:29:32.388 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-09 14:29:32.405 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-09 14:30:05.699 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-09 14:30:54.765 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 85.632 seconds (process running for 90.329)
+2024-07-09 14:30:54.839 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-09 14:33:46.829 [http-nio-8080-exec-7] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-09 14:34:01.686 [http-nio-8080-exec-1] INFO  c.s.wallet.services.StockService - Trying to update stock, action of selling stock, stock: NFLX, user: cega
+2024-07-09 14:34:01.816 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - User sold some shares of specific stock NOT all from walletstock: NFLX, quant: 2, user: cega
+2024-07-09 14:34:01.817 [http-nio-8080-exec-1] INFO  c.s.wallet.services.HistoryService - trying to insert history in database, user: cega, action: sell
+2024-07-09 14:34:03.428 [http-nio-8080-exec-1] INFO  c.s.w.services.TransactionService - user successfully sold stockuser: cega, stock: NFLX, quant: 2
+2024-07-09 14:34:03.640 [kafka-producer-network-thread | producer-1] INFO  c.s.w.P.n.kafka.KafkaProducerService - Task status send to Kafka topic : transaction-notification, Object: com.shares.wallet.model.History@468f26ca
+2024-07-09 14:34:03.834 [http-nio-8080-exec-1] INFO  c.s.w.controllers.HomeController - client sold stock through home page, user: cega, stock: NFLX, quant: 2
+2024-07-09 14:34:03.998 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.s.w.P.n.kafka.KafKaConsumerService - message consumed inside topic: transaction-notification with payload: com.shares.wallet.model.History@77a32165
+2024-07-09 14:34:04.090 [http-nio-8080-exec-2] INFO  c.s.w.services.TransactionService - finding user stock user: cega
+2024-07-10 01:03:52.943 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-10 01:03:52.959 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-10 01:07:27.785 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-10 01:08:11.058 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-10 01:08:11.104 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-10 01:10:38.757 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-10 01:11:46.705 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 222.697 seconds (process running for 232.491)
+2024-07-10 01:11:47.204 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-10 01:32:24.230 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-10 01:32:24.284 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-10 01:35:12.389 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-10 01:35:27.932 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 191.638 seconds (process running for 206.021)
+2024-07-10 01:35:28.053 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-10 02:04:45.118 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-10 02:04:45.188 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-10 02:07:36.883 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-10 02:08:20.627 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-10 02:08:20.648 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-10 02:08:55.705 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-10 02:09:25.279 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 70.153 seconds (process running for 80.267)
+2024-07-10 02:09:25.619 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-14 03:11:52.956 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-14 03:11:52.962 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-15 14:20:07.717 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-15 14:20:07.735 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-15 18:52:57.728 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-15 18:52:57.739 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-15 18:54:31.585 [main] INFO  c.s.w.P.n.kafka.KafkaConfig - Configuring KafkaAdmin with bootstrap servers: broker:9090
+2024-07-15 18:54:45.386 [main] INFO  com.shares.wallet.WalletApplication - Started WalletApplication in 115.552 seconds (process running for 133.166)
+2024-07-15 18:54:45.414 [main] INFO  com.shares.wallet.WalletApplication - Application Started de boa
+2024-07-16 13:33:43.890 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:33:43.968 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:35:32.858 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:35:32.887 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:36:10.141 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:36:10.164 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:36:39.647 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:36:39.651 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:37:01.105 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:37:01.109 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:37:20.526 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:37:20.530 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:37:41.669 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:37:41.672 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
+2024-07-16 13:38:03.032 [main] INFO  com.shares.wallet.WalletApplication - Starting WalletApplication v0.0.1-SNAPSHOT using Java 17.0.11 with PID 1 (/BOOT-INF/classes started by appuser in /)
+2024-07-16 13:38:03.038 [main] INFO  com.shares.wallet.WalletApplication - The following 1 profile is active: "docker"
