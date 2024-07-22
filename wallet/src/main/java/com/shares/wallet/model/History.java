@@ -29,7 +29,6 @@ public class History {
     private BigDecimal quant;
     @Column(nullable = false)
     private String name;
-
     private Date date;
     @Column
     private BigDecimal price;
