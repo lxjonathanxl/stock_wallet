@@ -101,7 +101,7 @@ The `POST /save/{symbol}` endpoint is secured using OAuth2 Authorization Code Fl
 2. **Set the URL** to your application's endpoint:
 
    ```
-   POST http://localhost:8090/save/nflx
+   http://localhost:8090/save/nflx
    ```
 
 3. **Add Authorization**:

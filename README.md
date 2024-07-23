@@ -30,6 +30,7 @@
 
 <p align="center">
   This Stock Wallet application allows users to buy, sell, and quote stock shares. Each transaction generates a detailed history, which is saved and sent directly to the user's email for easy tracking and security.
+   The application running on a virtual machine can be accessed on this website: 40.75.119.115:8080/login
 </p>
 
 
